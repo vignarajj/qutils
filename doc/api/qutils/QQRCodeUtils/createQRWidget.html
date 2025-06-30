@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the createQRWidget method from the QQRCodeUtils class, for the Dart programming language.">
+  <title>createQRWidget method - QQRCodeUtils class - qutils library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">qutils</a></li>
+    <li><a href="../../qutils/">qutils.dart</a></li>
+    <li><a href="../../qutils/QQRCodeUtils-class.html">QQRCodeUtils</a></li>
+    <li class="self-crumb">createQRWidget static method</li>
+  </ol>
+  <div class="self-name">createQRWidget</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="qutils&#47;QQRCodeUtils-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">createQRWidget</span> static method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype"><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a></span>
+<span class="name ">createQRWidget</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="createQRWidget-param-data"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">data</span>, {</span></li>
+<li><span class="parameter" id="createQRWidget-param-size"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span> <span class="parameter-name">size</span> = <span class="default-value">200.0</span>, </span></li>
+<li><span class="parameter" id="createQRWidget-param-foregroundColor"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-ui/Color-class.html">Color</a></span> <span class="parameter-name">foregroundColor</span> = <span class="default-value">Colors.black</span>, </span></li>
+<li><span class="parameter" id="createQRWidget-param-backgroundColor"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-ui/Color-class.html">Color</a></span> <span class="parameter-name">backgroundColor</span> = <span class="default-value">Colors.white</span>, </span></li>
+<li><span class="parameter" id="createQRWidget-param-version"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">version</span>, </span></li>
+<li><span class="parameter" id="createQRWidget-param-gapless"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">gapless</span> = <span class="default-value">false</span>, </span></li>
+<li><span class="parameter" id="createQRWidget-param-padding"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/painting/EdgeInsets-class.html">EdgeInsets</a></span> <span class="parameter-name">padding</span> = <span class="default-value">const EdgeInsets.all(10.0)</span>, </span></li>
+<li><span class="parameter" id="createQRWidget-param-semanticsLabel"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">semanticsLabel</span>, </span></li>
+</ol>})
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Creates a QR code widget</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">static Widget createQRWidget(
+  String data, {
+  double size = 200.0,
+  Color foregroundColor = Colors.black,
+  Color backgroundColor = Colors.white,
+  int? version,
+  bool gapless = false,
+  EdgeInsets padding = const EdgeInsets.all(10.0),
+  String? semanticsLabel,
+}) {
+  return QrImageView(
+    data: data,
+    version: version ?? QrVersions.auto,
+    size: size,
+    gapless: gapless,
+    padding: padding,
+    backgroundColor: backgroundColor,
+    semanticsLabel: semanticsLabel ?? &#39;QR Code&#39;,
+  );
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">qutils</a></li>
+    <li><a href="../../qutils/">qutils</a></li>
+    <li><a href="../../qutils/QQRCodeUtils-class.html">QQRCodeUtils</a></li>
+    <li class="self-crumb">createQRWidget static method</li>
+</ol>
+
+    <h5>QQRCodeUtils class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    qutils
+      1.0.0
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

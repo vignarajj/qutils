@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="qutils API docs, for the Dart programming language.">
+  <title>qutils - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="https://vignaraj.dev">qutils package</a></li>
+  </ol>
+  <div class="self-name">qutils</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <!-- 
+This README describes the package. If you publish this package to pub.dev,
+this README's contents appear on the landing page for your package.
+
+For information about how to write a good package README, see the guide for
+[writing package pages](https://dart.dev/tools/pub/writing-package-pages). 
+
+For general information about developing packages, see the Dart guide for
+[creating packages](https://dart.dev/guides/libraries/create-packages)
+and the Flutter guide for
+[developing packages and plugins](https://flutter.dev/to/develop-packages). 
+-->
+<h1 id="-qutils">🛠️ QUtils</h1>
+<blockquote>
+<p><strong>A comprehensive utility package for Dart &amp; Flutter developers</strong></p>
+</blockquote>
+<p><a href="https://pub.dev/packages/qutils"><img src="https://img.shields.io/pub/v/qutils.svg" alt="Pub Version"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+<a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-Compatible-blue.svg" alt="Flutter"></a></p>
+<p>QUtils is your <strong>all-in-one toolkit</strong> that supercharges your Dart and Flutter development with essential utilities, extensions, and helpers. Stop writing boilerplate code and start building amazing apps! 🚀</p>
+<hr>
+<h2 id="-platform-support">📱 Platform Support</h2>
+<table>
+<thead>
+<tr>
+<th align="center">Android</th>
+<th align="center">iOS</th>
+<th align="center">macOS</th>
+<th align="center">Web</th>
+<th align="center">Linux</th>
+<th align="center">Windows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+<td align="center">✅</td>
+</tr>
+</tbody>
+</table>
+<p>QUtils is designed to work seamlessly across all platforms supported by Flutter!</p>
+<hr>
+<h2 id="-features">✨ Features</h2>
+<h3 id="-countries-data---complete-world-database">🌍 <strong>Countries Data - Complete World Database</strong></h3>
+<ul>
+<li><strong>195+ countries</strong> with comprehensive data</li>
+<li><strong>ISO 2-letter and 3-letter codes</strong> (US, USA)</li>
+<li><strong>International phone codes</strong> (+1, +44, +91)</li>
+<li><strong>Flag emojis</strong> for visual representation 🇺🇸 🇬🇧 🇮🇳</li>
+<li><strong>Smart search and filtering</strong> capabilities</li>
+<li><strong>Lookup functions</strong> by name, code, or phone number</li>
+<li><strong>Utility lists</strong> for dropdowns and selections</li>
+</ul>
+<h3 id="-qlogger---advanced-colorful-logging">🎨 <strong>QLogger - Advanced Colorful Logging</strong></h3>
+<ul>
+<li><strong>Colorful console output</strong> with ANSI colors for better readability</li>
+<li><strong>Multiple log levels</strong>: Debug, Info, Warning, Error, Fatal</li>
+<li><strong>Custom tags</strong> and <strong>colored output</strong> for organized logging</li>
+<li><strong>JSON prettification</strong> and logging support</li>
+<li><strong>Text wrapping</strong> for long messages with proper indentation</li>
+<li><strong>Tagged loggers</strong> for component-specific logging</li>
+<li><strong>Configurable</strong> minimum log levels and formatting options</li>
+</ul>
+<h3 id="-datetime-utilities">🕒 <strong>DateTime Utilities</strong></h3>
+<ul>
+<li><strong>25+ powerful methods</strong> for date manipulation and formatting</li>
+<li>Relative time calculations (<code>2 hours ago</code>, <code>in 3 days</code>)</li>
+<li>Date validation and age calculation</li>
+<li>Start/end of day, week, month helpers</li>
+<li>Leap year detection and more!</li>
+</ul>
+<h3 id="-type-conversion">🔄 <strong>Type Conversion</strong></h3>
+<ul>
+<li><strong>Safe type conversions</strong> with fallback values</li>
+<li>Human-readable byte formatting (<code>1.5 GB</code>, <code>256 MB</code>)</li>
+<li>String to number conversions with validation</li>
+<li>Null-safe operations throughout</li>
+</ul>
+<h3 id="-file-info-utilities">📁 <strong>File Info Utilities</strong></h3>
+<ul>
+<li><strong>File type detection</strong> by extension (images, videos, documents)</li>
+<li>MIME type detection and file categorization</li>
+<li>File size calculations with human-readable formats</li>
+<li>Path manipulation and validation</li>
+<li>File existence checks and metadata extraction</li>
+</ul>
+<h3 id="-color-collections--extensions">🎨 <strong>Color Collections &amp; Extensions</strong></h3>
+<ul>
+<li><strong>100+ curated colors</strong> organized in collections</li>
+<li>Vibrant, pastel, brand-inspired, and nature colors</li>
+<li>Color manipulation (lighten, darken, saturate)</li>
+<li>Color scheme generation (complementary, triadic, analogous)</li>
+<li>Hex conversion and RGB utilities</li>
+</ul>
+<h3 id="-qr-code-utilities">🔗 <strong>QR Code Utilities</strong></h3>
+<ul>
+<li>QR code generation with customizable styling</li>
+<li>WiFi, URL, email, contact, and phone QR codes</li>
+<li>QR code validation and optimization</li>
+<li>Embedded images and custom designs</li>
+<li>Multiple error correction levels</li>
+</ul>
+<h3 id="-json-utilities">📄 <strong>JSON Utilities</strong></h3>
+<ul>
+<li>JSON prettification and minification</li>
+<li>Safe parsing with fallback values</li>
+<li>JSON validation and error reporting</li>
+<li>Dot notation value extraction</li>
+<li>Size calculation and key counting</li>
+</ul>
+<h3 id="-string-extensions">🔤 <strong>String Extensions</strong></h3>
+<ul>
+<li><strong>30+ string manipulation methods</strong></li>
+<li>Case conversions (camelCase, snake_case, kebab-case)</li>
+<li>Validation (email, URL, phone number)</li>
+<li>Safe type conversions from strings</li>
+<li>Text formatting and utilities</li>
+</ul>
+<h3 id="-datetime-extensions">⏰ <strong>DateTime Extensions</strong></h3>
+<ul>
+<li>Intuitive date formatting and manipulation</li>
+<li>Relative time calculations</li>
+<li>Date arithmetic and comparisons</li>
+<li>Quarter and week calculations</li>
+<li>Human-readable duration formatting</li>
+</ul>
+<h3 id="-file-extensions">📂 <strong>File Extensions</strong></h3>
+<ul>
+<li>File type detection and categorization</li>
+<li>Path manipulation utilities</li>
+<li>Size and metadata extraction</li>
+<li>File validation helpers</li>
+</ul>
+<hr>
+<h2 id="-quick-start">🚀 Quick Start</h2>
+<h3 id="installation">Installation</h3>
+<p>Add QUtils to your <code>pubspec.yaml</code>:</p>
+<pre class="language-yaml"><code class="language-yaml">dependencies:
+  qutils: ^1.0.0
+</code></pre>
+<p>Then run:</p>
+<pre class="language-bash"><code class="language-bash">flutter pub get
+</code></pre>
+<h3 id="basic-usage">Basic Usage</h3>
+<pre class="language-dart"><code class="language-dart">import 'package:qutils/qutils.dart';
+
+void main() {
+  // 🌍 Countries Data
+  print('Total countries: ${QCountries.all.length}'); // 195+
+  
+  // Find by ISO code
+  final usa = QCountries.byIso2('US');
+  print('${usa?.name} ${usa?.emoji} ${usa?.phoneCode}'); // "United States 🇺🇸 +1"
+  
+  // Search countries
+  final results = QCountries.search('United');
+  print('Found ${results.length} countries'); // United States, United Kingdom, etc.
+  
+  // Get all phone codes for a dropdown
+  final phoneCodes = QCountries.phoneCodes;
+  print('Available codes: ${phoneCodes.length}'); // All unique phone codes
+  
+  // 🎨 QLogger - Colorful Logging
+  QLogger.info('Application started successfully!');
+  QLogger.warning('This is a warning message', tag: 'AUTH');
+  QLogger.error('Something went wrong!', 
+    tag: 'DATABASE',
+    error: Exception('Connection failed'),
+    stackTrace: StackTrace.current,
+  );
+  
+  // JSON logging
+  QLogger.json({'user': 'john', 'status': 'active'}, tag: 'API');
+  
+  // Tagged logger for specific components
+  final apiLogger = QLogger.withTag('API');
+  apiLogger.info('API request completed');
+  
+  // 🕒 DateTime Utilities
+  final now = DateTime.now();
+  print(now.timeAgo()); // "just now"
+  print(now.toReadableWithTime()); // "Dec 25, 2023 10:30"
+  print(now.isToday); // true
+  print(now.quarter); // 4
+  
+  // 🔄 Type Conversion
+  print('42'.asIntSafe()); // 42
+  print('invalid'.asIntSafe(0)); // 0
+  print(QTypeConversion.bytesToHuman(1073741824)); // "1.00 GB"
+  
+  // 🎨 Colors
+  final color = QColors.electricBlue;
+  print(color.toHex()); // "#0080FF"
+  print(color.lighten(0.2).toHex()); // Lighter shade
+  
+  // 📁 File Utilities
+  final filePath = '/path/to/document.pdf';
+  print(filePath.isDocumentFile); // true
+  print(filePath.fileExtension); // "pdf"
+  print(QFileInfoUtils.getMimeType(filePath)); // "application/pdf"
+}
+</code></pre>
+<hr>
+<h2 id="-detailed-documentation">📖 Detailed Documentation</h2>
+<h3 id="-countries-data">🌍 Countries Data</h3>
+<p>QCountries provides comprehensive access to world country data with powerful lookup and search capabilities.</p>
+<h4 id="access-all-countries">Access All Countries</h4>
+<pre class="language-dart"><code class="language-dart">// Get all countries (195+ countries)
+final allCountries = QCountries.all;
+print('Total countries: ${allCountries.length}');
+
+// Access country properties
+final firstCountry = allCountries.first;
+print('Name: ${firstCountry.name}');        // "Afghanistan"
+print('ISO2: ${firstCountry.iso2}');        // "AF"
+print('ISO3: ${firstCountry.iso3}');        // "AFG"
+print('Phone: ${firstCountry.phoneCode}');  // "+93"
+print('Flag: ${firstCountry.emoji}');       // "🇦🇫"
+</code></pre>
+<h4 id="lookup-countries">Lookup Countries</h4>
+<pre class="language-dart"><code class="language-dart">// Lookup by ISO 2-letter code (case insensitive)
+final usa = QCountries.byIso2('US');
+final uk = QCountries.byIso2('gb'); // case insensitive
+print('USA: ${usa?.name} ${usa?.emoji}'); // "United States 🇺🇸"
+
+// Lookup by ISO 3-letter code
+final canada = QCountries.byIso3('CAN');
+print('Canada: ${canada?.name} ${canada?.emoji}'); // "Canada 🇨🇦"
+
+// Lookup by phone code
+final india = QCountries.byPhoneCode('+91');
+print('India: ${india?.name} ${india?.emoji}'); // "India 🇮🇳"
+
+// Lookup by name (exact match)
+final japan = QCountries.byName('Japan');
+print('Japan: ${japan?.name} ${japan?.emoji}'); // "Japan 🇯🇵"
+</code></pre>
+<h4 id="search-countries">Search Countries</h4>
+<pre class="language-dart"><code class="language-dart">// Search by partial name (case insensitive)
+final unitedCountries = QCountries.search('United');
+print('Found ${unitedCountries.length} countries'); // United States, United Kingdom, etc.
+
+// Search returns all matches
+for (final country in unitedCountries) {
+  print('${country.name} (${country.iso2}) ${country.emoji}');
+}
+
+// Empty search returns all countries
+final allResults = QCountries.search('');
+print('All countries: ${allResults.length}'); // Same as QCountries.all.length
+</code></pre>
+<h4 id="utility-lists-for-ui-components">Utility Lists for UI Components</h4>
+<pre class="language-dart"><code class="language-dart">// Get lists for dropdowns and selectors
+final countryNames = QCountries.names;          // List&lt;String&gt; of all country names
+final iso2Codes = QCountries.iso2Codes;         // List&lt;String&gt; of all ISO2 codes
+final iso3Codes = QCountries.iso3Codes;         // List&lt;String&gt; of all ISO3 codes
+final phoneCodes = QCountries.phoneCodes;       // List&lt;String&gt; of all phone codes
+final flagEmojis = QCountries.emojis;           // List&lt;String&gt; of all flag emojis
+
+// Example: Create a country dropdown
+Widget buildCountryDropdown() {
+  return DropdownButton&lt;String&gt;(
+    items: QCountries.all.map((country) {
+      return DropdownMenuItem(
+        value: country.iso2,
+        child: Row(
+          children: [
+            Text(country.emoji),
+            SizedBox(width: 8),
+            Text(country.name),
+          ],
+        ),
+      );
+    }).toList(),
+    onChanged: (String? selectedCountryCode) {
+      final selectedCountry = QCountries.byIso2(selectedCountryCode!);
+      print('Selected: ${selectedCountry?.name}');
+    },
+  );
+}
+
+// Example: Phone number input with country code
+Widget buildPhoneInput() {
+  return Row(
+    children: [
+      // Country code dropdown
+      DropdownButton&lt;String&gt;(
+        items: QCountries.phoneCodes.map((code) {
+          final country = QCountries.byPhoneCode(code);
+          return DropdownMenuItem(
+            value: code,
+            child: Text('${country?.emoji} $code'),
+          );
+        }).toList(),
+        onChanged: (code) =&gt; print('Selected code: $code'),
+      ),
+      // Phone number input
+      Expanded(
+        child: TextField(
+          decoration: InputDecoration(hintText: 'Phone number'),
+        ),
+      ),
+    ],
+  );
+}
+</code></pre>
+<h4 id="country-data-model">Country Data Model</h4>
+<pre class="language-dart"><code class="language-dart">// QCountry class structure
+class QCountry {
+  final String name;       // "United States"
+  final String iso2;       // "US"
+  final String iso3;       // "USA"
+  final String phoneCode;  // "+1"
+  final String emoji;      // "🇺🇸"
+  
+  // Equality based on ISO2 code
+  bool operator ==(Object other) =&gt; other is QCountry &amp;&amp; iso2 == other.iso2;
+  int get hashCode =&gt; iso2.hashCode;
+  
+  // String representation
+  String toString() =&gt; '$name ($iso2)'; // "United States (US)"
+}
+</code></pre>
+<h4 id="real-world-examples">Real-World Examples</h4>
+<pre class="language-dart"><code class="language-dart">// Address form with country selection
+class AddressForm extends StatefulWidget {
+  @override
+  _AddressFormState createState() =&gt; _AddressFormState();
+}
+
+class _AddressFormState extends State&lt;AddressForm&gt; {
+  QCountry? selectedCountry;
+  
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // Country picker
+        DropdownButtonFormField&lt;QCountry&gt;(
+          decoration: InputDecoration(labelText: 'Country'),
+          value: selectedCountry,
+          items: QCountries.all.map((country) {
+            return DropdownMenuItem(
+              value: country,
+              child: Row(
+                children: [
+                  Text(country.emoji, style: TextStyle(fontSize: 20)),
+                  SizedBox(width: 12),
+                  Expanded(child: Text(country.name)),
+                  Text('(${country.iso2})', style: TextStyle(color: Colors.grey)),
+                ],
+              ),
+            );
+          }).toList(),
+          onChanged: (country) =&gt; setState(() =&gt; selectedCountry = country),
+        ),
+        
+        // Show phone code if country selected
+        if (selectedCountry != null)
+          Padding(
+            padding: EdgeInsets.only(top: 16),
+            child: TextFormField(
+              decoration: InputDecoration(
+                labelText: 'Phone Number',
+                prefixText: '${selectedCountry!.phoneCode} ',
+                prefixIcon: Text(selectedCountry!.emoji),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+// Search functionality
+class CountrySearchWidget extends StatefulWidget {
+  @override
+  _CountrySearchWidgetState createState() =&gt; _CountrySearchWidgetState();
+}
+
+class _CountrySearchWidgetState extends State&lt;CountrySearchWidget&gt; {
+  List&lt;QCountry&gt; searchResults = QCountries.all;
+  
+  void _onSearchChanged(String query) {
+    setState(() {
+      searchResults = QCountries.search(query);
+    });
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        TextField(
+          decoration: InputDecoration(
+            hintText: 'Search countries...',
+            prefixIcon: Icon(Icons.search),
+          ),
+          onChanged: _onSearchChanged,
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: searchResults.length,
+            itemBuilder: (context, index) {
+              final country = searchResults[index];
+              return ListTile(
+                leading: Text(country.emoji, style: TextStyle(fontSize: 24)),
+                title: Text(country.name),
+                subtitle: Text('${country.iso2} • ${country.phoneCode}'),
+                onTap: () =&gt; print('Selected: ${country.name}'),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+}
+</code></pre>
+<h3 id="-qlogger">🎨 QLogger</h3>
+<p>QLogger provides advanced colorful logging capabilities perfect for debugging and monitoring your applications.</p>
+<h4 id="configuration">Configuration</h4>
+<pre class="language-dart"><code class="language-dart">// Configure logger settings
+QLogger.configure(
+  minLevel: LogLevel.debug,      // Minimum log level to display
+  maxLineLength: 120,            // Maximum line length before wrapping
+  wrapIndent: '    ',           // Indentation for wrapped lines
+);
+</code></pre>
+<h4 id="basic-logging">Basic Logging</h4>
+<pre class="language-dart"><code class="language-dart">// Different log levels with automatic coloring
+QLogger.debug('Debug information');
+QLogger.info('General information');
+QLogger.warning('Warning message');
+QLogger.error('Error occurred');
+QLogger.fatal('Critical error');
+
+// Custom colored logging
+QLogger.custom('Custom message', color: AnsiColor.magenta);
+</code></pre>
+<h4 id="tagged-logging">Tagged Logging</h4>
+<pre class="language-dart"><code class="language-dart">// Add tags for better organization
+QLogger.info('User logged in', tag: 'AUTH');
+QLogger.error('Database connection failed', tag: 'DB');
+
+// Create a tagged logger instance
+final authLogger = QLogger.withTag('AUTH');
+authLogger.info('Authentication successful');
+authLogger.warning('Invalid token detected');
+</code></pre>
+<h4 id="error-logging-with-context">Error Logging with Context</h4>
+<pre class="language-dart"><code class="language-dart">try {
+  // Some operation that might fail
+  throw Exception('Network timeout');
+} catch (error, stackTrace) {
+  QLogger.error(
+    'Failed to fetch user data',
+    tag: 'API',
+    error: error,
+    stackTrace: stackTrace,
+  );
+}
+</code></pre>
+<h4 id="json-logging">JSON Logging</h4>
+<pre class="language-dart"><code class="language-dart">// Log complex data structures
+final userData = {
+  'id': 123,
+  'name': 'John Doe',
+  'preferences': {
+    'theme': 'dark',
+    'notifications': true,
+  },
+};
+
+QLogger.json(userData, tag: 'USER_DATA', level: LogLevel.info);
+</code></pre>
+<h4 id="performance-logging">Performance Logging</h4>
+<pre class="language-dart"><code class="language-dart">final stopwatch = Stopwatch()..start();
+
+// Your operation here
+await performComplexOperation();
+
+stopwatch.stop();
+QLogger.info(
+  'Operation completed in ${stopwatch.elapsedMilliseconds}ms',
+  tag: 'PERFORMANCE',
+);
+</code></pre>
+<h3 id="-datetime-extensions-2">🕒 DateTime Extensions</h3>
+<pre class="language-dart"><code class="language-dart">final date = DateTime.now();
+
+// Formatting
+print(date.format('MMM dd, yyyy')); // "Dec 25, 2023"
+print(date.toDateString()); // "2023-12-25"
+print(date.toTimeString()); // "10:30:45"
+
+// Properties
+print(date.isToday); // true
+print(date.dayName); // "Monday"
+print(date.quarter); // 4
+print(date.weekOfYear); // 52
+
+// Manipulation
+print(date.startOfDay); // Today at 00:00:00
+print(date.addMonths(3)); // 3 months from now
+print(date.startOfWeek); // Monday of this week
+
+// Relative time
+final yesterday = date.subtract(Duration(days: 1));
+print(yesterday.timeAgo()); // "1 day ago"
+</code></pre>
+<h3 id="-type-conversion-2">🔄 Type Conversion</h3>
+<pre class="language-dart"><code class="language-dart">// Safe conversions with fallbacks
+print('42'.asIntSafe()); // 42
+print('invalid'.asIntSafe(0)); // 0 (fallback)
+print('42.5'.asDoubleSafe()); // 42.5
+print('true'.asBoolSafe()); // true
+print('yes'.asBoolSafe()); // true
+
+// Byte conversion
+print(QTypeConversion.bytesToHuman(1048576)); // "1.00 MB"
+print(QTypeConversion.humanToBytes('1.5 GB')); // 1610612736
+</code></pre>
+<h3 id="-colors">🎨 Colors</h3>
+<pre class="language-dart"><code class="language-dart">// Access curated color collections
+print(QColors.allColors.length); // 50+
+print(QColors.vibrantColors.length); // 8
+print(QColors.pastelColors.length); // 8
+
+// Get random colors
+final randomColor = QColors.random();
+final randomVibrant = QColors.randomVibrant();
+
+// Color manipulation
+final baseColor = QColors.electricBlue;
+final lighter = baseColor.lighten(0.3);
+final darker = baseColor.darken(0.2);
+final complement = baseColor.complement;
+
+// Color conversion
+print(baseColor.toHex()); // "#0080FF"
+print(baseColor.toRgbList()); // [0, 128, 255]
+
+// Color schemes
+final monochromatic = baseColor.monochromaticScheme; // 5 colors
+final analogous = baseColor.analogousScheme; // 5 colors
+final triadic = baseColor.triadicScheme; // 3 colors
+</code></pre>
+<hr>
+<h2 id="-testing">🧪 Testing</h2>
+<p>QUtils includes comprehensive test coverage for all features including the countries database:</p>
+<pre class="language-bash"><code class="language-bash"># Run all tests
+dart test
+
+# Run specific test file
+dart test test/countries_test.dart
+dart test test/qlogger_test.dart
+
+# Run with coverage
+dart test --coverage
+</code></pre>
+<h3 id="test-coverage">Test Coverage</h3>
+<ul>
+<li>✅ <strong>Countries</strong>: All lookup methods, search functionality, data integrity</li>
+<li>✅ <strong>QLogger</strong>: All log levels, tagging, JSON logging, configuration</li>
+<li>✅ <strong>DateTime</strong>: All utility methods and extensions</li>
+<li>✅ <strong>Type Conversion</strong>: Safe conversions with edge cases</li>
+<li>✅ <strong>File Utilities</strong>: Type detection, path manipulation</li>
+<li>✅ <strong>Colors</strong>: Color manipulation and scheme generation</li>
+<li>✅ <strong>QR Codes</strong>: Generation and validation</li>
+<li>✅ <strong>JSON</strong>: Parsing, validation, prettification</li>
+</ul>
+<hr>
+<h2 id="-contributing">🤝 Contributing</h2>
+<p>We welcome contributions! Please see our <a href="../CONTRIBUTING.md">Contributing Guide</a> for details.</p>
+<ol>
+<li>Fork the repository</li>
+<li>Create your feature branch (<code>git checkout -b feature/amazing-feature</code>)</li>
+<li>Commit your changes (<code>git commit -m 'Add some amazing feature'</code>)</li>
+<li>Push to the branch (<code>git push origin feature/amazing-feature</code>)</li>
+<li>Open a Pull Request</li>
+</ol>
+<hr>
+<h2 id="-license">📄 License</h2>
+<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+<hr>
+<h2 id="-acknowledgments">🙏 Acknowledgments</h2>
+<ul>
+<li>Flutter team for the amazing framework</li>
+<li>Dart team for the powerful language</li>
+<li>Open source community for inspiration and feedback</li>
+</ul>
+<hr>
+<p><strong>Made with ❤️ for the Flutter community</strong></p>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="color_extensions">
+  <span class="name"><a href="extensions_color_extensions/">extensions/color_extensions</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="datetime_extensions">
+  <span class="name"><a href="extensions_datetime_extensions/">extensions/datetime_extensions</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="file_extensions">
+  <span class="name"><a href="extensions_file_extensions/">extensions/file_extensions</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="string_extensions">
+  <span class="name"><a href="extensions_string_extensions/">extensions/string_extensions</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="qutils">
+  <span class="name"><a href="qutils/">qutils</a></span> 
+
+</dt>
+<dd>QUtils - A comprehensive utility package for Dart/Flutter
+</dd>
+
+        </dl>
+      </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="https://vignaraj.dev">qutils package</a></li>
+</ol>
+
+    <h5 class="hidden-xs"><span class="package-name">qutils</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="extensions_color_extensions/">extensions/color_extensions</a></li>
+      <li><a href="extensions_datetime_extensions/">extensions/datetime_extensions</a></li>
+      <li><a href="extensions_file_extensions/">extensions/file_extensions</a></li>
+      <li><a href="extensions_string_extensions/">extensions/string_extensions</a></li>
+      <li><a href="qutils/">qutils</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+</main>
+<footer>
+  <span class="no-break">
+    qutils
+      1.0.0
+  </span>
+  
+</footer>
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+</body>
+</html>
