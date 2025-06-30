@@ -1,7 +1,8 @@
 # https://dart.dev/guides/libraries/private-files
 # Created by `dart pub`
 .dart_tool/
-
+.idea/
+build/
 # Avoid committing pubspec.lock for library packages; see
 # https://dart.dev/guides/libraries/private-files#pubspeclock.
 pubspec.lock
@@ -12,7 +13,7 @@ example/test/
 example/pubspec.lock
 example/.dart_tool/
 example/.idea/
-example/.metadata/
+example/.metadata
 example/.packages
 example/.vscode/
 example/.DS_Store
@@ -21,3 +22,6 @@ example/analysis_options.yaml
 example/ios/Runner.xcworkspace/xcshareddata/xcschemes/
 example/ios/Runner.xcworkspace/xcuserdata/
 example/ios/Runner.xcworkspace/xcuserdata/xcschemes/
+example/.gitignore
+example/README.md
+.DS_Store
