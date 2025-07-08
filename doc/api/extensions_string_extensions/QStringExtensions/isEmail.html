@@ -79,7 +79,8 @@ print('invalid-email'.isEmail); // false
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">bool get isEmail {
   final emailRegex = RegExp(
-      r&#39;^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$&#39;);
+    r&#39;^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$&#39;,
+  );
   return emailRegex.hasMatch(this);
 }</code></pre>
 </section>
@@ -111,7 +112,7 @@ print('invalid-email'.isEmail); // false
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

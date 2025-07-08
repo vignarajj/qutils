@@ -72,10 +72,7 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static QRValidationResult validateQRData(String data) {
   if (data.isEmpty) {
-    return QRValidationResult(
-      isValid: false,
-      error: &#39;Data cannot be empty&#39;,
-    );
+    return QRValidationResult(isValid: false, error: &#39;Data cannot be empty&#39;);
   }
 
   &#47;&#47; Estimate data type
@@ -126,7 +123,7 @@
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

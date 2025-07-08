@@ -1,245 +1,273 @@
 import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+import 'package:intl/intl.dart';
+
 import 'qutils_base.dart';
 
 /// A utility class for colorful, formatted logging in Android Studio and VS Code.
 class QLogger {
-  /// Log levels with corresponding colors.
-  static const Map<LogLevel, AnsiColor> _levelColors = {
-    LogLevel.debug: AnsiColor.cyan,
-    LogLevel.info: AnsiColor.green,
-    LogLevel.warning: AnsiColor.yellow,
-    LogLevel.error: AnsiColor.red,
-    LogLevel.fatal: AnsiColor.magenta,
-  };
+  static bool useBoxyFormat = true;
+  static LogLevel currentLogLevel = LogLevel.debug;
+  static final StringBuffer _logBuffer = StringBuffer();
 
-  /// The minimum log level that will be shown.
-  static LogLevel _minLevel = LogLevel.debug;
+  /// Adjusted to ensure static access for includeTimestamps and is24HourFormat.
+  static bool includeTimestamps = false;
+  static bool is24HourFormat = true;
 
-  /// Maximum line length before wrapping
-  static int _maxLineLength = 120;
-
-  /// Indent for wrapped lines
-  static String _wrapIndent = '    ';
-
-  /// Configure the minimum log level that will be displayed.
+  /// Adjusted to ensure static access for useBoxyFormat.
   static void configure({
     LogLevel minLevel = LogLevel.debug,
-    int maxLineLength = 120,
-    String wrapIndent = '    ',
+    bool boxyFormat = true,
+    bool includeTime = false,
+    bool is24Hour = true,
   }) {
-    _minLevel = minLevel;
-    _maxLineLength = maxLineLength;
-    _wrapIndent = wrapIndent;
+    useBoxyFormat = boxyFormat;
+    currentLogLevel = minLevel;
+    includeTimestamps = includeTime;
+    is24HourFormat = is24Hour;
   }
 
-  /// Logs a debug message.
-  static void debug(dynamic message, {String? tag, AnsiColor? color}) {
-    _log(LogLevel.debug, message, tag: tag, customColor: color);
+  /// Logs an info message in green.
+  static void info(String message, [dynamic error, StackTrace? stackTrace]) {
+    _log('INFO', message, AnsiColors.green, LogLevel.info, error, stackTrace);
   }
 
-  /// Logs an info message.
-  static void info(dynamic message, {String? tag, AnsiColor? color}) {
-    _log(LogLevel.info, message, tag: tag, customColor: color);
-  }
-
-  /// Logs a warning message.
-  static void warning(dynamic message, {String? tag, AnsiColor? color}) {
-    _log(LogLevel.warning, message, tag: tag, customColor: color);
-  }
-
-  /// Logs an error message.
-  static void error(dynamic message, {
-    String? tag,
-    Object? error,
-    StackTrace? stackTrace,
-    AnsiColor? color,
-  }) {
-    _log(LogLevel.error, message,
-      tag: tag,
-      error: error,
-      stackTrace: stackTrace,
-      customColor: color,
+  /// Logs a warning message in yellow.
+  static void warning(String message, [dynamic error, StackTrace? stackTrace]) {
+    _log(
+      'WARNING',
+      message,
+      AnsiColors.yellow,
+      LogLevel.warning,
+      error,
+      stackTrace,
     );
   }
 
-  /// Logs a fatal error message.
-  static void fatal(dynamic message, {
-    String? tag,
-    Object? error,
-    StackTrace? stackTrace,
-    AnsiColor? color,
-  }) {
-    _log(LogLevel.fatal, message,
-      tag: tag,
-      error: error,
-      stackTrace: stackTrace,
-      customColor: color,
+  /// Logs an error message in red. Handles and formats stack trace if provided.
+  static void error(String message, [dynamic error, StackTrace? stackTrace]) {
+    // Handle large error logs
+    _handleLargeLogs(
+      message,
+      (msg) =>
+          _log('ERROR', msg, AnsiColors.red, LogLevel.error, error, stackTrace),
     );
   }
 
-  /// Custom colored logging
-  static void custom(dynamic message, {String? tag, required AnsiColor color}) {
-    _log(LogLevel.info, message, tag: tag, customColor: color);
+  /// Logs a debug message in blue.
+  static void debug(String message, [dynamic error, StackTrace? stackTrace]) {
+    _log('DEBUG', message, AnsiColors.blue, LogLevel.debug, error, stackTrace);
   }
 
-  /// JSON prettifies and logs the object.
-  static void json(dynamic jsonData, {
-    String? tag,
-    LogLevel level = LogLevel.debug,
-    AnsiColor? color,
-  }) {
-    String formatted;
+  /// Logs a JSON string in a pretty format.
+  static void prettyJson(String jsonString) {
     try {
-      if (jsonData is String) {
-        // Try to parse and re-encode for pretty printing
-        final decoded = jsonDecode(jsonData);
-        formatted = const JsonEncoder.withIndent('  ').convert(decoded);
-      } else {
-        formatted = const JsonEncoder.withIndent('  ').convert(jsonData);
-      }
+      final dynamic jsonObject = json.decode(jsonString);
+      final prettyString = const JsonEncoder.withIndent(
+        '  ',
+      ).convert(jsonObject);
+      _handleLargeLogs(
+        jsonString,
+        (msg) => _log('JSON', prettyString, AnsiColors.cyan, LogLevel.info),
+      );
     } catch (e) {
-      formatted = jsonData.toString();
+      error('Invalid JSON string provided for pretty logging.');
     }
-    _log(level, formatted, tag: tag, customColor: color);
   }
 
-  /// Create a logger with a specific tag
-  static QLoggerWithTag withTag(String tag) {
-    return QLoggerWithTag(tag);
+  /// Retrieves the appropriate emoji for the given log level.
+  static String _getEmojiForLevel(LogLevel level) {
+    switch (level) {
+      case LogLevel.info:
+        return '💡'; // Info emoji
+      case LogLevel.warning:
+        return '⚠️'; // Warning emoji
+      case LogLevel.error:
+        return '❌'; // Error emoji
+      case LogLevel.debug:
+        return '🐞'; // Debug emoji
+      case LogLevel.fatal:
+        return '❌'; // Error emoji
+    }
   }
 
-  /// Format text with proper wrapping for large text blocks
-  static List<String> _formatLargeText(String text) {
-    if (text.length <= _maxLineLength) {
-      return [text];
-    }
-
-    final lines = <String>[];
-    var currentLine = '';
-    final words = text.split(' ');
-
-    for (final word in words) {
-      if ((currentLine.length + word.length + 1) <= _maxLineLength) {
-        currentLine = currentLine.isEmpty ? word : '$currentLine $word';
-      } else {
-        if (currentLine.isNotEmpty) {
-          lines.add(currentLine);
-        }
-
-        // If the word itself is longer than maxLineLength, split it
-        if (word.length > _maxLineLength) {
-          var remaining = word;
-          while (remaining.length > _maxLineLength) {
-            lines.add(remaining.substring(0, _maxLineLength));
-            remaining = remaining.substring(_maxLineLength);
-          }
-          currentLine = remaining;
-        } else {
-          currentLine = word;
-        }
-      }
-    }
-
-    if (currentLine.isNotEmpty) {
-      lines.add(currentLine);
-    }
-
-    return lines;
-  }
-
-  /// Internal logging method.
+  /// General method to log messages with a specific color and level.
+  ///
+  /// [level] - Log level (e.g., INFO, WARNING).
+  /// [message] - The message to log.
+  /// [color] - ANSI color code for the message.
+  /// [logLevel] - Log level as `LogLevel` enum.
+  /// [error] - Optional error object.
+  /// [stackTrace] - Optional stack trace.
   static void _log(
-    LogLevel level,
-    dynamic message, {
-    String? tag,
-    Object? error,
+    String level,
+    String message,
+    String color,
+    LogLevel logLevel, [
+    dynamic error,
     StackTrace? stackTrace,
-    AnsiColor? customColor,
-  }) {
-    if (level.index < _minLevel.index) return;
+  ]) {
+    if (logLevel.index >= currentLogLevel.index) {
+      final String timestamp = includeTimestamps ? _getTimestamp() : '';
+      final String emoji = _getEmojiForLevel(logLevel);
 
-    final now = DateTime.now();
-    final timeStr = '${now.hour.toString().padLeft(2, '0')}:'
-        '${now.minute.toString().padLeft(2, '0')}:'
-        '${now.second.toString().padLeft(2, '0')}.'
-        '${now.millisecond.toString().padLeft(3, '0')}';
+      // Format stack trace if provided
+      String formattedStackTrace = '';
+      if (stackTrace != null) {
+        formattedStackTrace = _formatStackTrace(stackTrace);
+      }
 
-    final color = customColor ?? _levelColors[level] ?? AnsiColor.white;
-    final levelStr = level.toString().split('.').last.toUpperCase().padRight(7);
-    final tagStr = tag != null ? '[$tag] ' : '';
+      final String formattedMessage = message.toString();
 
-    final prefix = '$timeStr ${color.apply(levelStr)} $tagStr';
-    final messageStr = message.toString();
+      // Boxy formatting
+      if (useBoxyFormat) {
+        _printBoxyLog(
+          formattedMessage,
+          formattedStackTrace,
+          '$emoji $timestamp -  [${logLevel.name.toUpperCase()}]',
+          color,
+        );
+      } else {
+        _printFormatted('$color$formattedMessage${AnsiColors.reset}');
+      }
 
-    // Handle multi-line messages
-    final messageLines = _formatLargeText(messageStr);
+      _logToBuffer(level, message, error, stackTrace);
+    }
+  }
 
-    // Print first line with full prefix
-    print('$prefix${messageLines.first}');
+  /// Clears all logged messages from the buffer.
+  static void clearLogs() {
+    _logBuffer.clear();
+  }
 
-    // Print additional lines with indent
-    for (int i = 1; i < messageLines.length; i++) {
-      print('$_wrapIndent${messageLines[i]}');
+  /// Retrieves all logged messages from the buffer.
+  static void printAllLogs() {
+    final logs = _logBuffer.toString();
+    _handleLargeLogs(logs, (chunk) {
+      debugPrint(chunk);
+    });
+  }
+
+  /// Get the current timestamp in the specified format.
+  ///
+  /// Returns the formatted timestamp string.
+  static String _getTimestamp() {
+    final DateTime now = DateTime.now();
+    final String format = is24HourFormat ? 'HH:mm:ss' : 'hh:mm:ss a';
+    return DateFormat(format).format(now);
+  }
+
+  /// Prints the formatted log message using debugPrint to avoid the `I/flutter` prefix.
+  static void _printFormatted(String message) {
+    debugPrint('\x1B[0m$message\x1B[0m'); // Reset colors to avoid bleed
+  }
+
+  /// Handles large log messages by splitting them into manageable chunks.
+  static void _handleLargeLogs(String message, Function(String) logFunction) {
+    const int chunkSize = 800; // Define your chunk size
+    if (message.length <= chunkSize) {
+      logFunction(message);
+    } else {
+      int start = 0;
+      while (start < message.length) {
+        final end = (start + chunkSize < message.length)
+            ? start + chunkSize
+            : message.length;
+        logFunction(message.substring(start, end));
+        start += chunkSize;
+      }
+    }
+  }
+
+  /// Prints a formatted boxy log message with color and alignment.
+  ///
+  /// [message] - The log message to print.
+  /// [stackTrace] - The formatted stack trace.
+  /// [timestamp] - The timestamp to print.
+  /// [color] - The ANSI color code for the box.
+  static void _printBoxyLog(
+    String message,
+    String stackTrace,
+    String timestamp,
+    String color,
+  ) {
+    final String header = '$color┌${'─' * 100}┐${AnsiColors.reset}';
+    final String footer = '$color└${'─' * 100}┘${AnsiColors.reset}';
+    final String separator = '$color├${'─' * 100}┤${AnsiColors.reset}';
+
+    _printFormatted(header);
+
+    // Print timestamp only if it's enabled
+    if (includeTimestamps && timestamp.isNotEmpty) {
+      _printFormatted('$color│ $timestamp${AnsiColors.reset}');
+      _printFormatted(separator);
+    }
+    // Print message only if it's not empty
+    if (message.isNotEmpty) {
+      for (var line in message.split('\n')) {
+        _printFormatted('$color│ $line${AnsiColors.reset}');
+      }
+    }
+    // Print stack trace if available
+    if (stackTrace.isNotEmpty) {
+      for (var line in stackTrace.split('\n')) {
+        _printFormatted('$color│ $line${AnsiColors.reset}');
+      }
+      _printFormatted(separator);
     }
 
-    // Print error details if provided
+    _printFormatted(footer);
+  }
+
+  /// Formats the stack trace to a readable string format.
+  ///
+  /// [stackTrace] - The stack trace to format.
+  /// Returns a formatted string representation of the stack trace.
+  static String _formatStackTrace(StackTrace? stackTrace) {
+    if (stackTrace == null) return '';
+    final frames = stackTrace
+        .toString()
+        .split('\n')
+        .take(5); // Take the top 5 frames for compactness
+    return frames
+        .map((frame) => frame.trim())
+        .join('\n'); // Aligning stack trace within the box
+  }
+
+  /// Logs a message with the specified level to the buffer.
+  ///
+  /// [level] - The level of the log (e.g., DEBUG, INFO).
+  /// [message] - The message to log.
+  /// [error] - Optional error object.
+  /// [stackTrace] - Optional stack trace.
+  static void _logToBuffer(
+    String level,
+    String message, [
+    dynamic error,
+    StackTrace? stackTrace,
+  ]) {
+    _handleLargeLogs(
+      message,
+      (msg) => _logBuffer.writeln('${DateTime.now()}: $level - $msg'),
+    );
     if (error != null) {
-      final errorLines = _formatLargeText('Error: $error');
-      for (final line in errorLines) {
-        print('$_wrapIndent${AnsiColor.red.apply(line)}');
-      }
+      _logBuffer.writeln('Error: $error');
     }
-
-    // Print stack trace if provided
     if (stackTrace != null) {
-      final stackLines = stackTrace.toString().split('\n');
-      for (final line in stackLines.take(10)) { // Limit stack trace lines
-        if (line.isNotEmpty) {
-          print('$_wrapIndent${AnsiColor.brightBlack.apply(line)}');
-        }
-      }
+      _logBuffer.writeln('StackTrace: ${_formatStackTrace(stackTrace)}');
     }
   }
 }
 
-/// A logger instance with a predefined tag
-class QLoggerWithTag {
-  final String tag;
-
-  QLoggerWithTag(this.tag);
-
-  void debug(dynamic message, {AnsiColor? color}) {
-    QLogger.debug(message, tag: tag, color: color);
-  }
-
-  void info(dynamic message, {AnsiColor? color}) {
-    QLogger.info(message, tag: tag, color: color);
-  }
-
-  void warning(dynamic message, {AnsiColor? color}) {
-    QLogger.warning(message, tag: tag, color: color);
-  }
-
-  void error(dynamic message, {
-    Object? error,
-    StackTrace? stackTrace,
-    AnsiColor? color,
-  }) {
-    QLogger.error(message, tag: tag, error: error, stackTrace: stackTrace, color: color);
-  }
-
-  void fatal(dynamic message, {
-    Object? error,
-    StackTrace? stackTrace,
-    AnsiColor? color,
-  }) {
-    QLogger.fatal(message, tag: tag, error: error, stackTrace: stackTrace, color: color);
-  }
-
-  void json(dynamic jsonData, {
-    LogLevel level = LogLevel.debug,
-    AnsiColor? color,
-  }) {
-    QLogger.json(jsonData, tag: tag, level: level, color: color);
-  }
+/// ANSI color codes for colorful console output.
+class AnsiColors {
+  static const String reset = '\x1B[0m'; // Reset to default
+  static const String red = '\x1B[31m'; // Red text
+  static const String green = '\x1B[32m'; // Green text
+  static const String yellow = '\x1B[33m'; // Yellow text
+  static const String blue = '\x1B[34m'; // Blue text
+  static const String magenta = '\x1B[35m'; // Magenta text
+  static const String cyan = '\x1B[36m'; // Cyan text
+  static const String white = '\x1B[37m'; // White text
 }

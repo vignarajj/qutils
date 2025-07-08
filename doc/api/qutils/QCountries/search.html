@@ -72,7 +72,9 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static List&lt;QCountry&gt; search(String query) {
   final lowerQuery = query.toLowerCase();
-  return all.where((country) =&gt; country.name.toLowerCase().contains(lowerQuery)).toList();
+  return all
+      .where((country) =&gt; country.name.toLowerCase().contains(lowerQuery))
+      .toList();
 }</code></pre>
 </section>
 
@@ -101,7 +103,7 @@
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

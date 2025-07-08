@@ -68,12 +68,14 @@
     
 <section class="desc markdown">
   <p>Gets the file extension with dot</p>
+<p><code>includeDot</code> is set to true in QFileInfoUtils to include the dot in the extension.</p>
 </section>
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">String? get extensionWithDot =&gt; QFileInfoUtils.getExtension(path, includeDot: true);</code></pre>
+  <pre class="language-dart"><code class="language-dart">String? get extensionWithDot =&gt;
+    QFileInfoUtils.getExtension(path, includeDot: true);</code></pre>
 </section>
 
   </section>
@@ -103,7 +105,7 @@
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

@@ -72,7 +72,11 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static Color? getByName(String name, [Color? fallback]) {
-  final lowerName = name.toLowerCase().replaceAll(&#39; &#39;, &#39;&#39;).replaceAll(&#39;_&#39;, &#39;&#39;).replaceAll(&#39;-&#39;, &#39;&#39;);
+  final lowerName = name
+      .toLowerCase()
+      .replaceAll(&#39; &#39;, &#39;&#39;)
+      .replaceAll(&#39;_&#39;, &#39;&#39;)
+      .replaceAll(&#39;-&#39;, &#39;&#39;);
 
   final colorMap = &lt;String, Color&gt;{
     &#39;white&#39;: white,
@@ -126,7 +130,7 @@
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

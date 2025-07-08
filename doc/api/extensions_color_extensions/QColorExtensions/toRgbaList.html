@@ -63,6 +63,7 @@
     
 <section class="desc markdown">
   <p>Gets the RGBA values as a list <code>r, g, b, a</code></p>
+<p><a href="https://api.flutter.dev/flutter/dart-ui/Color/r.html">r</a> Red component, <a href="https://api.flutter.dev/flutter/dart-ui/Color/g.html">g</a> Green component, <a href="https://api.flutter.dev/flutter/dart-ui/Color/b.html">b</a> Blue component, <a href="https://api.flutter.dev/flutter/dart-ui/Color/a.html">a</a> Alpha component.</p>
 <p>Example:</p>
 <pre class="language-dart"><code class="language-dart">final color = Color(0x80FF5722);
 print(color.toRgbaList()); // [255, 87, 34, 128]
@@ -73,7 +74,12 @@ print(color.toRgbaList()); // [255, 87, 34, 128]
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">List&lt;int&gt; toRgbaList() =&gt; [(r * 255.0).round() &amp; 0xff, (g * 255.0).round() &amp; 0xff, (b * 255.0).round() &amp; 0xff, (a * 255.0).round() &amp; 0xff];</code></pre>
+  <pre class="language-dart"><code class="language-dart">List&lt;int&gt; toRgbaList() =&gt; [
+  (r * 255.0).round() &amp; 0xff,
+  (g * 255.0).round() &amp; 0xff,
+  (b * 255.0).round() &amp; 0xff,
+  (a * 255.0).round() &amp; 0xff,
+];</code></pre>
 </section>
 
 
@@ -101,7 +107,7 @@ print(color.toRgbaList()); // [255, 87, 34, 128]
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

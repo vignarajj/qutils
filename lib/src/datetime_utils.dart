@@ -11,15 +11,15 @@ class QDateTimeUtils {
   static const String readableWithTime = 'MMM dd, yyyy HH:mm';
   static const String shortDate = 'MM/dd/yyyy';
   static const String longDate = 'EEEE, MMMM dd, yyyy';
-  
+
   /// Formats a DateTime to a human-readable relative time string
-  /// 
-  /// Returns strings like "just now", "2 minutes ago", "3 hours ago", 
+  ///
+  /// Returns strings like "just now", "2 minutes ago", "3 hours ago",
   /// "yesterday", "2 days ago", etc.
-  /// 
+  ///
   /// [dateTime] The DateTime to format
   /// [locale] Optional locale for formatting (defaults to system locale)
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final now = DateTime.now();
@@ -29,18 +29,18 @@ class QDateTimeUtils {
   static String toRelativeTime(DateTime dateTime, {String? locale}) {
     final now = DateTime.now();
     final difference = now.difference(dateTime);
-    
+
     if (difference.inSeconds < 30) {
       return 'just now';
     } else if (difference.inMinutes < 1) {
       return '${difference.inSeconds} seconds ago';
     } else if (difference.inMinutes < 60) {
-      return difference.inMinutes == 1 
-          ? '1 minute ago' 
+      return difference.inMinutes == 1
+          ? '1 minute ago'
           : '${difference.inMinutes} minutes ago';
     } else if (difference.inHours < 24) {
-      return difference.inHours == 1 
-          ? '1 hour ago' 
+      return difference.inHours == 1
+          ? '1 hour ago'
           : '${difference.inHours} hours ago';
     } else if (difference.inDays < 7) {
       if (difference.inDays == 1) {
@@ -64,12 +64,12 @@ class QDateTimeUtils {
   static int calculateAge(DateTime birthDate) {
     final now = DateTime.now();
     int age = now.year - birthDate.year;
-    
+
     if (now.month < birthDate.month ||
         (now.month == birthDate.month && now.day < birthDate.day)) {
       age--;
     }
-    
+
     return age;
   }
 
@@ -94,7 +94,8 @@ class QDateTimeUtils {
         final parts = <String>[];
         if (days > 0) parts.add('$days ${days == 1 ? 'day' : 'days'}');
         if (hours > 0) parts.add('$hours ${hours == 1 ? 'hour' : 'hours'}');
-        if (minutes > 0) parts.add('$minutes ${minutes == 1 ? 'minute' : 'minutes'}');
+        if (minutes > 0)
+          parts.add('$minutes ${minutes == 1 ? 'minute' : 'minutes'}');
 
         return parts.join(' ');
       } else {
@@ -107,7 +108,8 @@ class QDateTimeUtils {
 
         final parts = <String>[];
         if (hours > 0) parts.add('$hours ${hours == 1 ? 'hour' : 'hours'}');
-        if (minutes > 0) parts.add('$minutes ${minutes == 1 ? 'minute' : 'minutes'}');
+        if (minutes > 0)
+          parts.add('$minutes ${minutes == 1 ? 'minute' : 'minutes'}');
 
         return parts.join(' ');
       } else {
@@ -119,8 +121,10 @@ class QDateTimeUtils {
         final seconds = duration.inSeconds.remainder(60);
 
         final parts = <String>[];
-        if (minutes > 0) parts.add('$minutes ${minutes == 1 ? 'minute' : 'minutes'}');
-        if (seconds > 0) parts.add('$seconds ${seconds == 1 ? 'second' : 'seconds'}');
+        if (minutes > 0)
+          parts.add('$minutes ${minutes == 1 ? 'minute' : 'minutes'}');
+        if (seconds > 0)
+          parts.add('$seconds ${seconds == 1 ? 'second' : 'seconds'}');
 
         return parts.join(' ');
       } else {
@@ -154,7 +158,7 @@ class QDateTimeUtils {
         // Continue to next format
       }
     }
-    
+
     return null;
   }
 

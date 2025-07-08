@@ -72,7 +72,9 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static QCountry? byIso3(String iso3) {
   try {
-    return all.firstWhere((country) =&gt; country.iso3.toUpperCase() == iso3.toUpperCase());
+    return all.firstWhere(
+      (country) =&gt; country.iso3.toUpperCase() == iso3.toUpperCase(),
+    );
   } catch (e) {
     return null;
   }
@@ -104,7 +106,7 @@
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

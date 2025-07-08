@@ -6,50 +6,29 @@ void main() {
   // Test QLogger basic functionality
   print('=== QLogger Tests ===');
 
-  // Configure logger
-  QLogger.configure(
-    minLevel: LogLevel.debug,
-    maxLineLength: 80,
-    wrapIndent: '  ',
-  );
-
   // Test different log levels
   QLogger.debug('This is a debug message');
   QLogger.info('Application started successfully!');
   QLogger.warning('This is a warning message');
   QLogger.error('This is an error message');
-  QLogger.fatal('This is a fatal error');
 
   // Test with tags
-  QLogger.info('User authentication', tag: 'AUTH');
-  QLogger.warning('Database connection slow', tag: 'DB');
+  QLogger.info('User authentication');
+  QLogger.warning('Database connection slow');
 
   // Test JSON logging
   final testData = {
     'user': 'john_doe',
     'status': 'active',
-    'preferences': {
-      'theme': 'dark',
-      'notifications': true,
-    },
+    'preferences': {'theme': 'dark', 'notifications': true},
   };
-  QLogger.json(testData, tag: 'USER_DATA');
-
-  // Test tagged logger
-  final apiLogger = QLogger.withTag('API');
-  apiLogger.info('API request started');
-  apiLogger.warning('Rate limit approaching');
+  QLogger.prettyJson(testData.toString());
 
   // Test error with details
   try {
     throw Exception('Network timeout');
   } catch (error, stackTrace) {
-    QLogger.error(
-      'Failed to fetch user data',
-      tag: 'NETWORK',
-      error: error,
-      stackTrace: stackTrace,
-    );
+    QLogger.error('Failed to fetch user data', error, stackTrace);
   }
 
   print('\n=== DateTime Utilities Tests ===');

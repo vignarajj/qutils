@@ -82,20 +82,14 @@ if (result.isValid) {
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static JSONValidationResult validate(String jsonString) {
   if (jsonString.isEmpty) {
-    return JSONValidationResult(
-      isValid: false,
-      error: &#39;Empty JSON string&#39;,
-    );
+    return JSONValidationResult(isValid: false, error: &#39;Empty JSON string&#39;);
   }
 
   try {
     jsonDecode(jsonString);
     return JSONValidationResult(isValid: true);
   } catch (e) {
-    return JSONValidationResult(
-      isValid: false,
-      error: e.toString(),
-    );
+    return JSONValidationResult(isValid: false, error: e.toString());
   }
 }</code></pre>
 </section>
@@ -125,7 +119,7 @@ if (result.isValid) {
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

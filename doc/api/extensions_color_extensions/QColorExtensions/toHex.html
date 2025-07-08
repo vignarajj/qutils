@@ -83,13 +83,13 @@ print(color.toHex(includeAlpha: false)); // #FF5722
   final hash = includeHash ? &#39;#&#39; : &#39;&#39;;
   if (includeAlpha) {
     return &#39;$hash${((a * 255.0).round() &amp; 0xff).toRadixString(16).padLeft(2, &#39;0&#39;).toUpperCase()}&#39;
-           &#39;${((r * 255.0).round() &amp; 0xff).toRadixString(16).padLeft(2, &#39;0&#39;).toUpperCase()}&#39;
-           &#39;${((g * 255.0).round() &amp; 0xff).toRadixString(16).padLeft(2, &#39;0&#39;).toUpperCase()}&#39;
-           &#39;${((b * 255.0).round() &amp; 0xff).toRadixString(16).padLeft(2, &#39;0&#39;).toUpperCase()}&#39;;
+        &#39;${((r * 255.0).round() &amp; 0xff).toRadixString(16).padLeft(2, &#39;0&#39;).toUpperCase()}&#39;
+        &#39;${((g * 255.0).round() &amp; 0xff).toRadixString(16).padLeft(2, &#39;0&#39;).toUpperCase()}&#39;
+        &#39;${((b * 255.0).round() &amp; 0xff).toRadixString(16).padLeft(2, &#39;0&#39;).toUpperCase()}&#39;;
   } else {
     return &#39;$hash${((r * 255.0).round() &amp; 0xff).toRadixString(16).padLeft(2, &#39;0&#39;).toUpperCase()}&#39;
-           &#39;${((g * 255.0).round() &amp; 0xff).toRadixString(16).padLeft(2, &#39;0&#39;).toUpperCase()}&#39;
-           &#39;${((b * 255.0).round() &amp; 0xff).toRadixString(16).padLeft(2, &#39;0&#39;).toUpperCase()}&#39;;
+        &#39;${((g * 255.0).round() &amp; 0xff).toRadixString(16).padLeft(2, &#39;0&#39;).toUpperCase()}&#39;
+        &#39;${((b * 255.0).round() &amp; 0xff).toRadixString(16).padLeft(2, &#39;0&#39;).toUpperCase()}&#39;;
   }
 }</code></pre>
 </section>
@@ -119,7 +119,7 @@ print(color.toHex(includeAlpha: false)); // #FF5722
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

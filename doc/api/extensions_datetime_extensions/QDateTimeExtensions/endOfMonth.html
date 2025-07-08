@@ -77,7 +77,8 @@ print(date.endOfMonth); // 2023-12-31 23:59:59.999
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">DateTime get endOfMonth =&gt; DateTime(year, month + 1, 1).subtract(const Duration(microseconds: 1));</code></pre>
+  <pre class="language-dart"><code class="language-dart">DateTime get endOfMonth =&gt;
+    DateTime(year, month + 1, 1).subtract(const Duration(microseconds: 1));</code></pre>
 </section>
 
   </section>
@@ -107,7 +108,7 @@ print(date.endOfMonth); // 2023-12-31 23:59:59.999
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

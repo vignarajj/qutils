@@ -79,7 +79,9 @@ print(yesterday.isYesterday); // true
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">bool get isYesterday {
   final yesterday = DateTime.now().subtract(const Duration(days: 1));
-  return year == yesterday.year &amp;&amp; month == yesterday.month &amp;&amp; day == yesterday.day;
+  return year == yesterday.year &amp;&amp;
+      month == yesterday.month &amp;&amp;
+      day == yesterday.day;
 }</code></pre>
 </section>
 
@@ -110,7 +112,7 @@ print(yesterday.isYesterday); // true
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

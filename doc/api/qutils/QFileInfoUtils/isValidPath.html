@@ -83,7 +83,30 @@
   if (invalidChars.hasMatch(filePath)) return false;
 
   &#47;&#47; Check for reserved names on Windows
-  final reservedNames = [&#39;CON&#39;, &#39;PRN&#39;, &#39;AUX&#39;, &#39;NUL&#39;, &#39;COM1&#39;, &#39;COM2&#39;, &#39;COM3&#39;, &#39;COM4&#39;, &#39;COM5&#39;, &#39;COM6&#39;, &#39;COM7&#39;, &#39;COM8&#39;, &#39;COM9&#39;, &#39;LPT1&#39;, &#39;LPT2&#39;, &#39;LPT3&#39;, &#39;LPT4&#39;, &#39;LPT5&#39;, &#39;LPT6&#39;, &#39;LPT7&#39;, &#39;LPT8&#39;, &#39;LPT9&#39;];
+  final reservedNames = [
+    &#39;CON&#39;,
+    &#39;PRN&#39;,
+    &#39;AUX&#39;,
+    &#39;NUL&#39;,
+    &#39;COM1&#39;,
+    &#39;COM2&#39;,
+    &#39;COM3&#39;,
+    &#39;COM4&#39;,
+    &#39;COM5&#39;,
+    &#39;COM6&#39;,
+    &#39;COM7&#39;,
+    &#39;COM8&#39;,
+    &#39;COM9&#39;,
+    &#39;LPT1&#39;,
+    &#39;LPT2&#39;,
+    &#39;LPT3&#39;,
+    &#39;LPT4&#39;,
+    &#39;LPT5&#39;,
+    &#39;LPT6&#39;,
+    &#39;LPT7&#39;,
+    &#39;LPT8&#39;,
+    &#39;LPT9&#39;,
+  ];
   final fileName = getFileName(filePath)?.toUpperCase();
   if (fileName != null &amp;&amp; reservedNames.contains(fileName)) return false;
 
@@ -116,7 +139,7 @@
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

@@ -4,7 +4,7 @@ import 'dart:math' as math;
 /// Comprehensive color collection for QUtils
 class QColors {
   // ======================== BASIC COLORS ========================
-  
+
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
   static const Color red = Color(0xFFFF0000);
@@ -13,18 +13,18 @@ class QColors {
   static const Color yellow = Color(0xFFFFFF00);
   static const Color cyan = Color(0xFF00FFFF);
   static const Color magenta = Color(0xFFFF00FF);
-  
+
   // ======================== GRAY SCALE ========================
-  
+
   static const Color lightGray = Color(0xFFD3D3D3);
   static const Color gray = Color(0xFF808080);
   static const Color darkGray = Color(0xFF404040);
   static const Color veryLightGray = Color(0xFFF5F5F5);
   static const Color veryDarkGray = Color(0xFF202020);
   static const Color silver = Color(0xFFC0C0C0);
-  
+
   // ======================== VIBRANT COLORS ========================
-  
+
   static const Color hotPink = Color(0xFFFF69B4);
   static const Color electricBlue = Color(0xFF0080FF);
   static const Color limeGreen = Color(0xFF32CD32);
@@ -66,7 +66,7 @@ class QColors {
   static const Color lavenderField = Color(0xFF9370DB);
 
   // ======================== DARK COLORS ========================
-  
+
   static const Color darkBlue = Color(0xFF001F3F);
   static const Color darkGreen = Color(0xFF2D5016);
   static const Color darkRed = Color(0xFF8B0000);
@@ -75,7 +75,7 @@ class QColors {
   static const Color midnight = Color(0xFF191970);
 
   // ======================== COLOR COLLECTIONS ========================
-  
+
   /// All colors in the collection
   static List<Color> get allColors => [
     // Basic
@@ -83,50 +83,116 @@ class QColors {
     // Gray scale
     lightGray, gray, darkGray, veryLightGray, veryDarkGray, silver,
     // Vibrant
-    hotPink, electricBlue, limeGreen, warmOrange, deepPurple, brightYellow, neonGreen, crimsonRed,
+    hotPink,
+    electricBlue,
+    limeGreen,
+    warmOrange,
+    deepPurple,
+    brightYellow,
+    neonGreen,
+    crimsonRed,
     // Pastel
-    pastelPink, pastelBlue, pastelGreen, pastelYellow, pastelPurple, pastelOrange, pastelMint, pastelLavender,
+    pastelPink,
+    pastelBlue,
+    pastelGreen,
+    pastelYellow,
+    pastelPurple,
+    pastelOrange,
+    pastelMint,
+    pastelLavender,
     // Brand-inspired
-    facebookBlue, twitterBlue, instagramPurple, whatsappGreen, youtubeRed, linkedinBlue, githubBlack, googleRed,
+    facebookBlue,
+    twitterBlue,
+    instagramPurple,
+    whatsappGreen,
+    youtubeRed,
+    linkedinBlue,
+    githubBlack,
+    googleRed,
     // Nature-inspired
     forestGreen, oceanBlue, sunsetOrange, skyBlue, earthBrown, lavenderField,
     // Dark
     darkBlue, darkGreen, darkRed, darkPurple, charcoal, midnight,
   ];
-  
+
   /// Vibrant colors collection
   static List<Color> get vibrantColors => [
-    hotPink, electricBlue, limeGreen, warmOrange, deepPurple, brightYellow, neonGreen, crimsonRed,
+    hotPink,
+    electricBlue,
+    limeGreen,
+    warmOrange,
+    deepPurple,
+    brightYellow,
+    neonGreen,
+    crimsonRed,
   ];
-  
+
   /// Pastel colors collection
   static List<Color> get pastelColors => [
-    pastelPink, pastelBlue, pastelGreen, pastelYellow, pastelPurple, pastelOrange, pastelMint, pastelLavender,
+    pastelPink,
+    pastelBlue,
+    pastelGreen,
+    pastelYellow,
+    pastelPurple,
+    pastelOrange,
+    pastelMint,
+    pastelLavender,
   ];
-  
+
   /// Brand colors collection
   static List<Color> get brandColors => [
-    facebookBlue, twitterBlue, instagramPurple, whatsappGreen, youtubeRed, linkedinBlue, githubBlack, googleRed,
+    facebookBlue,
+    twitterBlue,
+    instagramPurple,
+    whatsappGreen,
+    youtubeRed,
+    linkedinBlue,
+    githubBlack,
+    googleRed,
   ];
-  
+
   /// Nature colors collection
   static List<Color> get natureColors => [
-    forestGreen, oceanBlue, sunsetOrange, skyBlue, earthBrown, lavenderField,
+    forestGreen,
+    oceanBlue,
+    sunsetOrange,
+    skyBlue,
+    earthBrown,
+    lavenderField,
   ];
-  
+
   /// Dark colors collection
   static List<Color> get darkColors => [
-    darkBlue, darkGreen, darkRed, darkPurple, charcoal, midnight,
+    darkBlue,
+    darkGreen,
+    darkRed,
+    darkPurple,
+    charcoal,
+    midnight,
   ];
-  
+
   /// Gray scale colors collection
   static List<Color> get grayColors => [
-    white, veryLightGray, lightGray, silver, gray, darkGray, veryDarkGray, black,
+    white,
+    veryLightGray,
+    lightGray,
+    silver,
+    gray,
+    darkGray,
+    veryDarkGray,
+    black,
   ];
-  
+
   /// Basic colors collection
   static List<Color> get basicColors => [
-    white, black, red, green, blue, yellow, cyan, magenta,
+    white,
+    black,
+    red,
+    green,
+    blue,
+    yellow,
+    cyan,
+    magenta,
   ];
 
   // ======================== UTILITY METHODS ========================
@@ -157,7 +223,11 @@ class QColors {
 
   /// Gets a color by name (case insensitive)
   static Color? getByName(String name, [Color? fallback]) {
-    final lowerName = name.toLowerCase().replaceAll(' ', '').replaceAll('_', '').replaceAll('-', '');
+    final lowerName = name
+        .toLowerCase()
+        .replaceAll(' ', '')
+        .replaceAll('_', '')
+        .replaceAll('-', '');
 
     final colorMap = <String, Color>{
       'white': white,
@@ -200,17 +270,13 @@ class QColors {
   }
 
   /// Creates a gradient from a list of colors
-  static LinearGradient createGradient(List<Color> colors, {
+  static LinearGradient createGradient(
+    List<Color> colors, {
     AlignmentGeometry begin = Alignment.centerLeft,
     AlignmentGeometry end = Alignment.centerRight,
     List<double>? stops,
   }) {
-    return LinearGradient(
-      begin: begin,
-      end: end,
-      colors: colors,
-      stops: stops,
-    );
+    return LinearGradient(begin: begin, end: end, colors: colors, stops: stops);
   }
 
   /// Gets complementary color
@@ -219,7 +285,7 @@ class QColors {
     final complementaryHue = (hsl.hue + 180) % 360;
     return hsl.withHue(complementaryHue).toColor();
   }
-  
+
   /// Gets analogous colors
   static List<Color> getAnalogous(Color color, {int count = 3}) {
     final hsl = HSLColor.fromColor(color);

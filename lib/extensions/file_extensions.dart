@@ -2,17 +2,16 @@ import 'dart:io';
 import '../src/file_info_utils.dart';
 
 /// File extensions for QUtils
-/// 
+///
 /// Provides convenient extension methods on File objects for getting
 /// file information, size, and other file-related utilities.
 extension QFileExtensions on File {
-  
   /// Gets the file extension (without dot)
-  /// 
+  ///
   /// [includeDot] is a parameter used in QFileInfoUtils to determine whether the dot should be included in the extension.
   ///
   /// Returns the file extension or null if not found
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final file = File('/path/to/document.pdf');
@@ -20,60 +19,61 @@ extension QFileExtensions on File {
   /// print(file.extensionWithDot); // ".pdf"
   /// ```
   String? get extension => QFileInfoUtils.getExtension(path);
-  
+
   /// Gets the file extension with dot
   ///
   /// [includeDot] is set to true in QFileInfoUtils to include the dot in the extension.
-  String? get extensionWithDot => QFileInfoUtils.getExtension(path, includeDot: true);
-  
+  String? get extensionWithDot =>
+      QFileInfoUtils.getExtension(path, includeDot: true);
+
   /// Gets the file name (including extension)
-  /// 
+  ///
   /// Returns the filename or null if path is invalid
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final file = File('/path/to/document.pdf');
   /// print(file.fileName); // "document.pdf"
   /// ```
   String? get fileName => QFileInfoUtils.getFileName(path);
-  
+
   /// Gets the file name without extension
-  /// 
+  ///
   /// Returns the base filename or null if path is invalid
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final file = File('/path/to/document.pdf');
   /// print(file.baseName); // "document"
   /// ```
   String? get baseName => QFileInfoUtils.getBaseName(path);
-  
+
   /// Gets the directory path
-  /// 
+  ///
   /// Returns the directory path or null if path is invalid
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final file = File('/path/to/document.pdf');
   /// print(file.directory); // "/path/to"
   /// ```
   String? get directoryPath => QFileInfoUtils.getDirectory(path);
-  
+
   /// Gets the MIME type based on file extension
-  /// 
+  ///
   /// Returns the MIME type or null if not determined
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final file = File('/path/to/document.pdf');
   /// print(file.mimeType); // "application/pdf"
   /// ```
   String? get mimeType => QFileInfoUtils.getMimeType(path);
-  
+
   /// Checks if this file is an image
-  /// 
+  ///
   /// Returns true if the file is likely an image based on extension
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final file = File('/path/to/photo.jpg');
@@ -82,9 +82,9 @@ extension QFileExtensions on File {
   bool get isImageFile => QFileInfoUtils.isImage(path);
 
   /// Checks if this file is a video
-  /// 
+  ///
   /// Returns true if the file is likely a video based on extension
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final file = File('/path/to/movie.mp4');
@@ -93,9 +93,9 @@ extension QFileExtensions on File {
   bool get isVideoFile => QFileInfoUtils.isVideo(path);
 
   /// Checks if this file is an audio file
-  /// 
+  ///
   /// Returns true if the file is likely an audio file based on extension
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final file = File('/path/to/song.mp3');
@@ -104,9 +104,9 @@ extension QFileExtensions on File {
   bool get isAudioFile => QFileInfoUtils.isAudio(path);
 
   /// Checks if this file is a document
-  /// 
+  ///
   /// Returns true if the file is likely a document based on extension
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final file = File('/path/to/document.pdf');
@@ -137,9 +137,9 @@ extension QFileExtensions on File {
   bool get isPresentationFile => QFileInfoUtils.isPresentation(path);
 
   /// Checks if this file is an archive
-  /// 
+  ///
   /// Returns true if the file is likely an archive based on extension
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final file = File('/path/to/archive.zip');
@@ -186,49 +186,49 @@ extension QFileExtensions on File {
 /// Provides convenient extension methods on String paths for getting
 /// file information without creating File objects.
 extension QPathExtensions on String {
-  
   /// Gets the file extension from this path (without dot)
-  /// 
+  ///
   /// [includeDot] Whether to include the dot in the extension (defaults to false)
-  /// 
+  ///
   /// Returns the file extension or null if not found
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('/path/to/document.pdf'.fileExtension); // "pdf"
   /// print('/path/to/document.pdf'.fileExtensionWithDot); // ".pdf"
   /// ```
   String? get fileExtension => QFileInfoUtils.getExtension(this);
-  
+
   /// Gets the file extension with dot
   ///
   /// [includeDot] is set to true in QFileInfoUtils to include the dot in the extension.
-  String? get fileExtensionWithDot => QFileInfoUtils.getExtension(this, includeDot: true);
-  
+  String? get fileExtensionWithDot =>
+      QFileInfoUtils.getExtension(this, includeDot: true);
+
   /// Gets the file name from this path (including extension)
-  /// 
+  ///
   /// Returns the filename or null if path is invalid
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('/path/to/document.pdf'.fileName); // "document.pdf"
   /// ```
   String? get fileName => QFileInfoUtils.getFileName(this);
-  
+
   /// Gets the file name without extension from this path
-  /// 
+  ///
   /// Returns the base filename or null if path is invalid
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('/path/to/document.pdf'.fileBaseName); // "document"
   /// ```
   String? get fileBaseName => QFileInfoUtils.getBaseName(this);
-  
+
   /// Gets the directory path from this file path
-  /// 
+  ///
   /// Returns the directory path or null if path is invalid
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('/path/to/document.pdf'.directoryPath); // "/path/to"
@@ -236,9 +236,9 @@ extension QPathExtensions on String {
   String? get fileDirectory => QFileInfoUtils.getDirectory(this);
 
   /// Gets the MIME type for this file path based on extension
-  /// 
+  ///
   /// Returns the MIME type or null if not determined
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('/path/to/document.pdf'.mimeType); // "application/pdf"
@@ -248,33 +248,33 @@ extension QPathExtensions on String {
   /// Checks if this file path represents an image
   ///
   /// Returns true if the file is likely an image based on extension
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('/path/to/photo.jpg'.isImageFile); // true
   /// ```
   bool get isImageFile => QFileInfoUtils.isImage(this);
-  
+
   /// Checks if this file path represents a video
   ///
   /// Returns true if the file is likely a video based on extension
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('/path/to/movie.mp4'.isVideoFile); // true
   /// ```
   bool get isVideoFile => QFileInfoUtils.isVideo(this);
-  
+
   /// Checks if this file path represents an audio file
   ///
   /// Returns true if the file is likely an audio file based on extension
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('/path/to/song.mp3'.isAudioFile); // true
   /// ```
   bool get isAudioFile => QFileInfoUtils.isAudio(this);
-  
+
   /// Checks if this file path represents a document
   ///
   /// Returns true if the file is likely a document based on extension
@@ -308,13 +308,13 @@ extension QPathExtensions on String {
   /// Checks if this file path represents an archive
   ///
   /// Returns true if the file is likely an archive based on extension
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('/path/to/archive.zip'.isArchiveFile); // true
   /// ```
   bool get isArchiveFile => QFileInfoUtils.isArchive(this);
-  
+
   /// Checks if this file path represents a code file
   ///
   /// Returns true if the file is likely a code file based on extension
@@ -383,9 +383,9 @@ extension QPathExtensions on String {
   /// Sanitizes this filename
   ///
   /// [replacement] Character to replace invalid characters with (defaults to '_')
-  /// 
+  ///
   /// Returns a sanitized filename
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final sanitized = 'file<name>?.txt'.sanitizeFileName();
@@ -394,11 +394,11 @@ extension QPathExtensions on String {
   String get sanitizedFileName => QFileInfoUtils.sanitizeFileName(this);
 
   /// Creates a sanitized version of this file path
-  /// 
+  ///
   /// [replacement] Character to replace invalid characters with (defaults to '_')
-  /// 
+  ///
   /// Returns a sanitized file path
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final sanitized = '/path/to/file<name>?.txt'.sanitizeFilePath();
@@ -407,17 +407,20 @@ extension QPathExtensions on String {
   String sanitizeFilePath({String replacement = '_'}) {
     final fileName = this.fileName;
     if (fileName == null) return this;
-    
-    final sanitizedName = QFileInfoUtils.sanitizeFileName(fileName, replacement: replacement);
+
+    final sanitizedName = QFileInfoUtils.sanitizeFileName(
+      fileName,
+      replacement: replacement,
+    );
     final directory = fileDirectory ?? '';
-    
+
     return directory.isEmpty ? sanitizedName : '$directory/$sanitizedName';
   }
-  
+
   /// Converts this path to a File object
-  /// 
+  ///
   /// Returns a File object for this path
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final file = '/path/to/document.pdf'.toFile();

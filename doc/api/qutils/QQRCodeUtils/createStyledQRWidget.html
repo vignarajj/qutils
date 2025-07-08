@@ -96,9 +96,13 @@
     gapless: false,
     padding: padding,
     backgroundColor: backgroundColor,
-    embeddedImage: null, &#47;&#47; This would need actual image handling with proper asset path
-    embeddedImageStyle: embeddedImage != null ?
-      QrEmbeddedImageStyle(size: Size.square(size * embeddedImageSizePercent)) : null,
+    embeddedImage:
+        null, &#47;&#47; This would need actual image handling with proper asset path
+    embeddedImageStyle: embeddedImage != null
+        ? QrEmbeddedImageStyle(
+            size: Size.square(size * embeddedImageSizePercent),
+          )
+        : null,
   );
 
   if (borderRadius != null || shadow != null) {
@@ -143,7 +147,7 @@
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

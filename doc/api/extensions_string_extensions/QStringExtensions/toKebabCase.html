@@ -83,12 +83,14 @@ print('HelloWorld'.toKebabCase()); // "hello-world"
   &#47;&#47; but avoid duplicate hyphens
   result = result.replaceAllMapped(
     RegExp(r&#39;([a-z])([A-Z])&#39;),
-        (match) =&gt; &#39;${match.group(1)}-${match.group(2)}&#39;,
+    (match) =&gt; &#39;${match.group(1)}-${match.group(2)}&#39;,
   );
 
   &#47;&#47; Convert to lowercase and clean up any duplicate hyphens
-  return result.toLowerCase().replaceAll(RegExp(r&#39;-+&#39;), &#39;-&#39;).replaceAll(
-      RegExp(r&#39;^-|-$&#39;), &#39;&#39;);
+  return result
+      .toLowerCase()
+      .replaceAll(RegExp(r&#39;-+&#39;), &#39;-&#39;)
+      .replaceAll(RegExp(r&#39;^-|-$&#39;), &#39;&#39;);
 }</code></pre>
 </section>
 
@@ -117,7 +119,7 @@ print('HelloWorld'.toKebabCase()); // "hello-world"
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

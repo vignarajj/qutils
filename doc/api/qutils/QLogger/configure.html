@@ -56,8 +56,9 @@
       
 <span class="returntype">void</span>
 <span class="name ">configure</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="configure-param-minLevel"><span class="type-annotation"><a href="../../qutils/LogLevel.html">LogLevel</a></span> <span class="parameter-name">minLevel</span> = <span class="default-value">LogLevel.debug</span>, </span></li>
-<li><span class="parameter" id="configure-param-maxLineLength"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">maxLineLength</span> = <span class="default-value">120</span>, </span></li>
-<li><span class="parameter" id="configure-param-wrapIndent"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">wrapIndent</span> = <span class="default-value">&#39;    &#39;</span>, </span></li>
+<li><span class="parameter" id="configure-param-boxyFormat"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">boxyFormat</span> = <span class="default-value">true</span>, </span></li>
+<li><span class="parameter" id="configure-param-includeTime"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">includeTime</span> = <span class="default-value">false</span>, </span></li>
+<li><span class="parameter" id="configure-param-is24Hour"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">is24Hour</span> = <span class="default-value">true</span>, </span></li>
 </ol>})
 
       
@@ -65,7 +66,7 @@
     </section>
     
 <section class="desc markdown">
-  <p>Configure the minimum log level that will be displayed.</p>
+  <p>Adjusted to ensure static access for useBoxyFormat.</p>
 </section>
 
 
@@ -74,12 +75,14 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static void configure({
   LogLevel minLevel = LogLevel.debug,
-  int maxLineLength = 120,
-  String wrapIndent = &#39;    &#39;,
+  bool boxyFormat = true,
+  bool includeTime = false,
+  bool is24Hour = true,
 }) {
-  _minLevel = minLevel;
-  _maxLineLength = maxLineLength;
-  _wrapIndent = wrapIndent;
+  useBoxyFormat = boxyFormat;
+  currentLogLevel = minLevel;
+  includeTimestamps = includeTime;
+  is24HourFormat = is24Hour;
 }</code></pre>
 </section>
 
@@ -108,7 +111,7 @@
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

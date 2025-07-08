@@ -18,14 +18,10 @@ class QRValidationResult {
 
 /// Comprehensive QR Code utilities for QUtils
 class QQRCodeUtils {
-
   /// Validates QR code data and provides recommendations
   static QRValidationResult validateQRData(String data) {
     if (data.isEmpty) {
-      return QRValidationResult(
-        isValid: false,
-        error: 'Data cannot be empty',
-      );
+      return QRValidationResult(isValid: false, error: 'Data cannot be empty');
     }
 
     // Estimate data type
@@ -71,7 +67,9 @@ class QQRCodeUtils {
   }
 
   /// Creates a WiFi QR code string
-  static String createWiFiQR(String ssid, String password, {
+  static String createWiFiQR(
+    String ssid,
+    String password, {
     String security = 'WPA',
     bool hidden = false,
   }) {
@@ -188,9 +186,13 @@ class QQRCodeUtils {
       gapless: false,
       padding: padding,
       backgroundColor: backgroundColor,
-      embeddedImage: null, // This would need actual image handling with proper asset path
-      embeddedImageStyle: embeddedImage != null ?
-        QrEmbeddedImageStyle(size: Size.square(size * embeddedImageSizePercent)) : null,
+      embeddedImage:
+          null, // This would need actual image handling with proper asset path
+      embeddedImageStyle: embeddedImage != null
+          ? QrEmbeddedImageStyle(
+              size: Size.square(size * embeddedImageSizePercent),
+            )
+          : null,
     );
 
     if (borderRadius != null || shadow != null) {
@@ -253,7 +255,8 @@ class QQRCodeUtils {
 
     // Scale based on version and error level (approximate)
     final scaleFactor = version * 1.5 * (1.0 - errorLevel * 0.1);
-    return baseCapacity.map((key, value) =>
-      MapEntry(key, (value * scaleFactor).round()));
+    return baseCapacity.map(
+      (key, value) => MapEntry(key, (value * scaleFactor).round()),
+    );
   }
 }

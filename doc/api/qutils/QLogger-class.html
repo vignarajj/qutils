@@ -160,123 +160,163 @@
     </dl>
   </section>
     
+  <section class="summary offset-anchor" id="static-properties">
+    <h2>Static Properties</h2>
+    <dl class="properties">
+        <dt id="currentLogLevel" class="property">
+  <span class="name"><a href="../qutils/QLogger/currentLogLevel.html">currentLogLevel</a></span>
+  <span class="signature">&#8596; <a href="../qutils/LogLevel.html">LogLevel</a></span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="includeTimestamps" class="property">
+  <span class="name"><a href="../qutils/QLogger/includeTimestamps.html">includeTimestamps</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  
+
+</dt>
+<dd>
+  Adjusted to ensure static access for includeTimestamps and is24HourFormat.
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="is24HourFormat" class="property">
+  <span class="name"><a href="../qutils/QLogger/is24HourFormat.html">is24HourFormat</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+        <dt id="useBoxyFormat" class="property">
+  <span class="name"><a href="../qutils/QLogger/useBoxyFormat.html">useBoxyFormat</a></span>
+  <span class="signature">&#8596; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  
+
+</dt>
+<dd>
+  
+  <div class="features"><span class="feature">getter/setter pair</span></div>
+
+</dd>
+
+    </dl>
+  </section>
     
   <section class="summary offset-anchor" id="static-methods">
     <h2>Static Methods</h2>
     <dl class="callables">
-        <dt id="configure" class="callable">
-  <span class="name"><a href="../qutils/QLogger/configure.html">configure</a></span><span class="signature">(<wbr>{<span class="parameter" id="configure-param-minLevel"><span class="type-annotation"><a href="../qutils/LogLevel.html">LogLevel</a></span> <span class="parameter-name">minLevel</span> = <span class="default-value">LogLevel.debug</span>, </span><span class="parameter" id="configure-param-maxLineLength"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">maxLineLength</span> = <span class="default-value">120</span>, </span><span class="parameter" id="configure-param-wrapIndent"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">wrapIndent</span> = <span class="default-value">&#39;    &#39;</span></span>})
+        <dt id="clearLogs" class="callable">
+  <span class="name"><a href="../qutils/QLogger/clearLogs.html">clearLogs</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
 
 </dt>
 <dd>
-  Configure the minimum log level that will be displayed.
+  Clears all logged messages from the buffer.
   
 
 </dd>
 
-        <dt id="custom" class="callable">
-  <span class="name"><a href="../qutils/QLogger/custom.html">custom</a></span><span class="signature">(<wbr><span class="parameter" id="custom-param-message"><span class="type-annotation">dynamic</span> <span class="parameter-name">message</span>, {</span><span class="parameter" id="custom-param-tag"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">tag</span>, </span><span class="parameter" id="custom-param-color"><span>required</span> <span class="type-annotation"><a href="../qutils/AnsiColor-class.html">AnsiColor</a></span> <span class="parameter-name">color</span></span>})
+        <dt id="configure" class="callable">
+  <span class="name"><a href="../qutils/QLogger/configure.html">configure</a></span><span class="signature">(<wbr>{<span class="parameter" id="configure-param-minLevel"><span class="type-annotation"><a href="../qutils/LogLevel.html">LogLevel</a></span> <span class="parameter-name">minLevel</span> = <span class="default-value">LogLevel.debug</span>, </span><span class="parameter" id="configure-param-boxyFormat"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">boxyFormat</span> = <span class="default-value">true</span>, </span><span class="parameter" id="configure-param-includeTime"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">includeTime</span> = <span class="default-value">false</span>, </span><span class="parameter" id="configure-param-is24Hour"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">is24Hour</span> = <span class="default-value">true</span></span>})
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
 
 </dt>
 <dd>
-  Custom colored logging
+  Adjusted to ensure static access for useBoxyFormat.
   
 
 </dd>
 
         <dt id="debug" class="callable">
-  <span class="name"><a href="../qutils/QLogger/debug.html">debug</a></span><span class="signature">(<wbr><span class="parameter" id="debug-param-message"><span class="type-annotation">dynamic</span> <span class="parameter-name">message</span>, {</span><span class="parameter" id="debug-param-tag"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">tag</span>, </span><span class="parameter" id="debug-param-color"><span class="type-annotation"><a href="../qutils/AnsiColor-class.html">AnsiColor</a>?</span> <span class="parameter-name">color</span></span>})
+  <span class="name"><a href="../qutils/QLogger/debug.html">debug</a></span><span class="signature">(<wbr><span class="parameter" id="debug-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span>, [</span><span class="parameter" id="debug-param-error"><span class="type-annotation">dynamic</span> <span class="parameter-name">error</span>, </span><span class="parameter" id="debug-param-stackTrace"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/StackTrace-class.html">StackTrace</a>?</span> <span class="parameter-name">stackTrace</span></span>])
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
 
 </dt>
 <dd>
-  Logs a debug message.
+  Logs a debug message in blue.
   
 
 </dd>
 
         <dt id="error" class="callable">
-  <span class="name"><a href="../qutils/QLogger/error.html">error</a></span><span class="signature">(<wbr><span class="parameter" id="error-param-message"><span class="type-annotation">dynamic</span> <span class="parameter-name">message</span>, {</span><span class="parameter" id="error-param-tag"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">tag</span>, </span><span class="parameter" id="error-param-error"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">error</span>, </span><span class="parameter" id="error-param-stackTrace"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/StackTrace-class.html">StackTrace</a>?</span> <span class="parameter-name">stackTrace</span>, </span><span class="parameter" id="error-param-color"><span class="type-annotation"><a href="../qutils/AnsiColor-class.html">AnsiColor</a>?</span> <span class="parameter-name">color</span></span>})
+  <span class="name"><a href="../qutils/QLogger/error.html">error</a></span><span class="signature">(<wbr><span class="parameter" id="error-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span>, [</span><span class="parameter" id="error-param-error"><span class="type-annotation">dynamic</span> <span class="parameter-name">error</span>, </span><span class="parameter" id="error-param-stackTrace"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/StackTrace-class.html">StackTrace</a>?</span> <span class="parameter-name">stackTrace</span></span>])
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
 
 </dt>
 <dd>
-  Logs an error message.
-  
-
-</dd>
-
-        <dt id="fatal" class="callable">
-  <span class="name"><a href="../qutils/QLogger/fatal.html">fatal</a></span><span class="signature">(<wbr><span class="parameter" id="fatal-param-message"><span class="type-annotation">dynamic</span> <span class="parameter-name">message</span>, {</span><span class="parameter" id="fatal-param-tag"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">tag</span>, </span><span class="parameter" id="fatal-param-error"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">error</span>, </span><span class="parameter" id="fatal-param-stackTrace"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/StackTrace-class.html">StackTrace</a>?</span> <span class="parameter-name">stackTrace</span>, </span><span class="parameter" id="fatal-param-color"><span class="type-annotation"><a href="../qutils/AnsiColor-class.html">AnsiColor</a>?</span> <span class="parameter-name">color</span></span>})
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Logs a fatal error message.
+  Logs an error message in red. Handles and formats stack trace if provided.
   
 
 </dd>
 
         <dt id="info" class="callable">
-  <span class="name"><a href="../qutils/QLogger/info.html">info</a></span><span class="signature">(<wbr><span class="parameter" id="info-param-message"><span class="type-annotation">dynamic</span> <span class="parameter-name">message</span>, {</span><span class="parameter" id="info-param-tag"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">tag</span>, </span><span class="parameter" id="info-param-color"><span class="type-annotation"><a href="../qutils/AnsiColor-class.html">AnsiColor</a>?</span> <span class="parameter-name">color</span></span>})
+  <span class="name"><a href="../qutils/QLogger/info.html">info</a></span><span class="signature">(<wbr><span class="parameter" id="info-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span>, [</span><span class="parameter" id="info-param-error"><span class="type-annotation">dynamic</span> <span class="parameter-name">error</span>, </span><span class="parameter" id="info-param-stackTrace"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/StackTrace-class.html">StackTrace</a>?</span> <span class="parameter-name">stackTrace</span></span>])
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
 
 </dt>
 <dd>
-  Logs an info message.
+  Logs an info message in green.
   
 
 </dd>
 
-        <dt id="json" class="callable">
-  <span class="name"><a href="../qutils/QLogger/json.html">json</a></span><span class="signature">(<wbr><span class="parameter" id="json-param-jsonData"><span class="type-annotation">dynamic</span> <span class="parameter-name">jsonData</span>, {</span><span class="parameter" id="json-param-tag"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">tag</span>, </span><span class="parameter" id="json-param-level"><span class="type-annotation"><a href="../qutils/LogLevel.html">LogLevel</a></span> <span class="parameter-name">level</span> = <span class="default-value">LogLevel.debug</span>, </span><span class="parameter" id="json-param-color"><span class="type-annotation"><a href="../qutils/AnsiColor-class.html">AnsiColor</a>?</span> <span class="parameter-name">color</span></span>})
+        <dt id="prettyJson" class="callable">
+  <span class="name"><a href="../qutils/QLogger/prettyJson.html">prettyJson</a></span><span class="signature">(<wbr><span class="parameter" id="prettyJson-param-jsonString"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">jsonString</span></span>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
 
 </dt>
 <dd>
-  JSON prettifies and logs the object.
+  Logs a JSON string in a pretty format.
+  
+
+</dd>
+
+        <dt id="printAllLogs" class="callable">
+  <span class="name"><a href="../qutils/QLogger/printAllLogs.html">printAllLogs</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Retrieves all logged messages from the buffer.
   
 
 </dd>
 
         <dt id="warning" class="callable">
-  <span class="name"><a href="../qutils/QLogger/warning.html">warning</a></span><span class="signature">(<wbr><span class="parameter" id="warning-param-message"><span class="type-annotation">dynamic</span> <span class="parameter-name">message</span>, {</span><span class="parameter" id="warning-param-tag"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">tag</span>, </span><span class="parameter" id="warning-param-color"><span class="type-annotation"><a href="../qutils/AnsiColor-class.html">AnsiColor</a>?</span> <span class="parameter-name">color</span></span>})
+  <span class="name"><a href="../qutils/QLogger/warning.html">warning</a></span><span class="signature">(<wbr><span class="parameter" id="warning-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span>, [</span><span class="parameter" id="warning-param-error"><span class="type-annotation">dynamic</span> <span class="parameter-name">error</span>, </span><span class="parameter" id="warning-param-stackTrace"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/StackTrace-class.html">StackTrace</a>?</span> <span class="parameter-name">stackTrace</span></span>])
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
 
 </dt>
 <dd>
-  Logs a warning message.
-  
-
-</dd>
-
-        <dt id="withTag" class="callable">
-  <span class="name"><a href="../qutils/QLogger/withTag.html">withTag</a></span><span class="signature">(<wbr><span class="parameter" id="withTag-param-tag"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">tag</span></span>)
-    <span class="returntype parameter">&#8594; <a href="../qutils/QLoggerWithTag-class.html">QLoggerWithTag</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  Create a logger with a specific tag
+  Logs a warning message in yellow.
   
 
 </dd>
@@ -308,7 +348,7 @@
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

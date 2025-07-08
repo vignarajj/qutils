@@ -4,19 +4,18 @@ import '../src/datetime_utils.dart';
 import '../src/file_info_utils.dart';
 
 /// String extensions for QUtils
-/// 
+///
 /// Provides convenient extension methods on String objects for type conversion,
 /// JSON operations, and utility functions.
 extension QStringExtensions on String {
-
   // ======================== TYPE CONVERSION ========================
 
   /// Safely converts this string to an integer
-  /// 
+  ///
   /// [fallback] The value to return if conversion fails (defaults to null)
-  /// 
+  ///
   /// Returns the parsed integer or fallback if conversion fails
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('42'.asIntSafe()); // 42
@@ -28,11 +27,11 @@ extension QStringExtensions on String {
   }
 
   /// Safely converts this string to a double
-  /// 
+  ///
   /// [fallback] The value to return if conversion fails (defaults to null)
-  /// 
+  ///
   /// Returns the parsed double or fallback if conversion fails
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('42.5'.asDoubleSafe()); // 42.5
@@ -44,11 +43,11 @@ extension QStringExtensions on String {
   }
 
   /// Safely converts this string to a num
-  /// 
+  ///
   /// [fallback] The value to return if conversion fails (defaults to null)
-  /// 
+  ///
   /// Returns the parsed num or fallback if conversion fails
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('42'.asNumSafe()); // 42
@@ -60,15 +59,15 @@ extension QStringExtensions on String {
   }
 
   /// Safely converts this string to a boolean
-  /// 
+  ///
   /// Recognizes various string representations:
   /// - true: 'true', 'yes', 'y', '1', 'on', 'enabled'
   /// - false: 'false', 'no', 'n', '0', 'off', 'disabled'
-  /// 
+  ///
   /// [fallback] The value to return if conversion fails (defaults to null)
-  /// 
+  ///
   /// Returns the parsed boolean or fallback if conversion fails
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('true'.asBoolSafe()); // true
@@ -80,12 +79,12 @@ extension QStringExtensions on String {
   }
 
   /// Safely converts this string to a List by splitting
-  /// 
+  ///
   /// [delimiter] The delimiter to split on (defaults to ',')
   /// [fallback] The value to return if conversion fails
-  /// 
+  ///
   /// Returns the split list or fallback if conversion fails
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('a,b,c'.asListSafe()); // ['a', 'b', 'c']
@@ -93,16 +92,19 @@ extension QStringExtensions on String {
   /// ```
   List<T>? asListSafe<T>({String delimiter = ',', List<T>? fallback}) {
     return QTypeConversion.toListSafe<T>(
-        this, delimiter: delimiter, fallback: fallback);
+      this,
+      delimiter: delimiter,
+      fallback: fallback,
+    );
   }
 
   /// Safely converts this string to a DateTime
-  /// 
+  ///
   /// [customFormats] Additional date formats to try
   /// [fallback] The value to return if parsing fails
-  /// 
+  ///
   /// Returns the parsed DateTime or fallback if parsing fails
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('2023-12-25'.asDateTimeSafe()); // DateTime instance
@@ -116,11 +118,11 @@ extension QStringExtensions on String {
   // ======================== JSON OPERATIONS ========================
 
   /// Prettifies this JSON string with proper indentation
-  /// 
+  ///
   /// [indent] The indentation string (defaults to 2 spaces)
-  /// 
+  ///
   /// Returns the prettified JSON string or null if parsing fails
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final minified = '{"name":"John","age":30}';
@@ -135,9 +137,9 @@ extension QStringExtensions on String {
   }
 
   /// Minifies this JSON string by removing whitespace
-  /// 
+  ///
   /// Returns the minified JSON string or null if parsing fails
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final pretty = '''
@@ -153,9 +155,9 @@ extension QStringExtensions on String {
   }
 
   /// Validates if this string is valid JSON
-  /// 
+  ///
   /// Returns a validation result with success status and message
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final result = '{"name":"John"}'.jsonValidate();
@@ -168,9 +170,9 @@ extension QStringExtensions on String {
   }
 
   /// Checks if this string is valid JSON
-  /// 
+  ///
   /// Returns true if the string is valid JSON, false otherwise
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('{"name":"John"}'.isValidJSON); // true
@@ -181,11 +183,11 @@ extension QStringExtensions on String {
   }
 
   /// Safely parses this JSON string to a Map
-  /// 
+  ///
   /// [fallback] The value to return if parsing fails
-  /// 
+  ///
   /// Returns the parsed Map or fallback if parsing fails
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final map = '{"name":"John","age":30}'.asMapFromJSON();
@@ -196,11 +198,11 @@ extension QStringExtensions on String {
   }
 
   /// Safely parses this JSON string to a List
-  /// 
+  ///
   /// [fallback] The value to return if parsing fails
-  /// 
+  ///
   /// Returns the parsed List or fallback if parsing fails
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final list = '[1,2,3]'.asListFromJSON();
@@ -211,9 +213,9 @@ extension QStringExtensions on String {
   }
 
   /// Gets the size of this JSON string in bytes
-  /// 
+  ///
   /// Returns the size in bytes or null if string is invalid JSON
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final size = '{"name":"John"}'.jsonSize();
@@ -223,11 +225,11 @@ extension QStringExtensions on String {
   }
 
   /// Gets human-readable size of this JSON string
-  /// 
+  ///
   /// [decimals] Number of decimal places (defaults to 2)
-  /// 
+  ///
   /// Returns the human-readable size or null if string is invalid JSON
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final size = '{"name":"John"}'.jsonHumanSize();
@@ -238,12 +240,12 @@ extension QStringExtensions on String {
   }
 
   /// Extracts a value from this JSON string using dot notation path
-  /// 
+  ///
   /// [path] The dot notation path (e.g., 'user.profile.name')
   /// [fallback] The value to return if path is not found
-  /// 
+  ///
   /// Returns the value at the path or fallback if not found
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final json = '{"user":{"profile":{"name":"John"}}}';
@@ -255,11 +257,11 @@ extension QStringExtensions on String {
   }
 
   /// Counts the number of keys in this JSON object
-  /// 
+  ///
   /// [recursive] Whether to count nested keys (defaults to true)
-  /// 
+  ///
   /// Returns the number of keys or null if JSON is invalid
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final json = '{"name":"John","details":{"age":30,"city":"NYC"}}';
@@ -272,7 +274,7 @@ extension QStringExtensions on String {
   // ======================== STRING UTILITIES ========================
 
   /// Checks if this string is null or empty
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print(''.isNullOrEmpty); // true
@@ -281,7 +283,7 @@ extension QStringExtensions on String {
   bool get isNullOrEmpty => isEmpty;
 
   /// Checks if this string is null, empty, or contains only whitespace
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('   '.isNullOrWhitespace); // true
@@ -290,7 +292,7 @@ extension QStringExtensions on String {
   bool get isNullOrWhitespace => trim().isEmpty;
 
   /// Checks if this string contains only digits
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('123'.isNumeric); // true
@@ -303,7 +305,7 @@ extension QStringExtensions on String {
   }
 
   /// Checks if this string is a valid number (int or double)
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('123'.isNumber); // true
@@ -316,7 +318,7 @@ extension QStringExtensions on String {
   }
 
   /// Checks if this string is a valid email address
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('user@example.com'.isEmail); // true
@@ -324,12 +326,13 @@ extension QStringExtensions on String {
   /// ```
   bool get isEmail {
     final emailRegex = RegExp(
-        r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+    );
     return emailRegex.hasMatch(this);
   }
 
   /// Checks if this string is a valid URL
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('https://example.com'.isURL); // true
@@ -345,7 +348,7 @@ extension QStringExtensions on String {
   }
 
   /// Capitalizes the first letter of this string
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('hello world'.capitalize()); // "Hello world"
@@ -356,7 +359,7 @@ extension QStringExtensions on String {
   }
 
   /// Capitalizes the first letter of each word in this string
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('hello world'.capitalizeWords()); // "Hello World"
@@ -367,7 +370,7 @@ extension QStringExtensions on String {
   }
 
   /// Reverses this string
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('hello'.reverse()); // "olleh"
@@ -378,10 +381,10 @@ extension QStringExtensions on String {
   }
 
   /// Truncates this string to the specified length and adds ellipsis
-  /// 
+  ///
   /// [maxLength] Maximum length of the string
   /// [ellipsis] The ellipsis string to append (defaults to '...')
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('Hello World'.truncate(8)); // "Hello..."
@@ -393,9 +396,9 @@ extension QStringExtensions on String {
   }
 
   /// Removes all non-alphanumeric characters from this string
-  /// 
+  ///
   /// [keepSpaces] Whether to keep spaces (defaults to false)
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('Hello, World!'.alphanumericOnly()); // "HelloWorld"
@@ -407,7 +410,7 @@ extension QStringExtensions on String {
   }
 
   /// Counts the number of words in this string
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('Hello world'.wordCount); // 2
@@ -415,13 +418,11 @@ extension QStringExtensions on String {
   /// ```
   int get wordCount {
     if (isEmpty) return 0;
-    return trim()
-        .split(RegExp(r'\s+'))
-        .length;
+    return trim().split(RegExp(r'\s+')).length;
   }
 
   /// Converts this string to camelCase
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('hello world'.toCamelCase()); // "helloWorld"
@@ -438,7 +439,7 @@ extension QStringExtensions on String {
   }
 
   /// Converts this string to PascalCase
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('hello world'.toPascalCase()); // "HelloWorld"
@@ -446,13 +447,11 @@ extension QStringExtensions on String {
   /// ```
   String toPascalCase() {
     if (isEmpty) return this;
-    return split(RegExp(r'[\s\-_]+'))
-        .map((word) => word.capitalize())
-        .join('');
+    return split(RegExp(r'[\s\-_]+')).map((word) => word.capitalize()).join('');
   }
 
   /// Converts this string to snake_case
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('Hello World'.toSnakeCase()); // "hello_world"
@@ -468,16 +467,18 @@ extension QStringExtensions on String {
     // but avoid duplicate underscores
     result = result.replaceAllMapped(
       RegExp(r'([a-z])([A-Z])'),
-          (match) => '${match.group(1)}_${match.group(2)}',
+      (match) => '${match.group(1)}_${match.group(2)}',
     );
 
     // Convert to lowercase and clean up any duplicate underscores
-    return result.toLowerCase().replaceAll(RegExp(r'_+'), '_').replaceAll(
-        RegExp(r'^_|_$'), '');
+    return result
+        .toLowerCase()
+        .replaceAll(RegExp(r'_+'), '_')
+        .replaceAll(RegExp(r'^_|_$'), '');
   }
 
   /// Converts this string to kebab-case
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// print('Hello World'.toKebabCase()); // "hello-world"
@@ -493,12 +494,14 @@ extension QStringExtensions on String {
     // but avoid duplicate hyphens
     result = result.replaceAllMapped(
       RegExp(r'([a-z])([A-Z])'),
-          (match) => '${match.group(1)}-${match.group(2)}',
+      (match) => '${match.group(1)}-${match.group(2)}',
     );
 
     // Convert to lowercase and clean up any duplicate hyphens
-    return result.toLowerCase().replaceAll(RegExp(r'-+'), '-').replaceAll(
-        RegExp(r'^-|-$'), '');
+    return result
+        .toLowerCase()
+        .replaceAll(RegExp(r'-+'), '-')
+        .replaceAll(RegExp(r'^-|-$'), '');
   }
 
   /// Gets the directory path from this file path

@@ -2,20 +2,19 @@ import 'package:intl/intl.dart';
 import '../src/datetime_utils.dart';
 
 /// DateTime extensions for QUtils
-/// 
+///
 /// Provides convenient extension methods on DateTime objects for formatting,
 /// manipulation, and relative time calculations.
 extension QDateTimeExtensions on DateTime {
-  
   // ======================== FORMATTING ========================
-  
+
   /// Formats this DateTime using the specified format string
-  /// 
+  ///
   /// [format] The format string (uses DateFormat patterns)
   /// [locale] Optional locale for formatting
-  /// 
+  ///
   /// Returns the formatted string
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final date = DateTime.now();
@@ -25,34 +24,34 @@ extension QDateTimeExtensions on DateTime {
   String format(String format, {String? locale}) {
     return DateFormat(format, locale).format(this);
   }
-  
+
   /// Formats this DateTime as ISO8601 string
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final date = DateTime.now();
   /// print(date.toIso8601String()); // "2023-12-25T10:30:00.000Z"
   /// ```
   String toIso() => format(QDateTimeUtils.iso8601);
-  
+
   /// Formats this DateTime as date only (yyyy-MM-dd)
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final date = DateTime.now();
   /// print(date.toDateString()); // "2023-12-25"
   /// ```
   String toDateString() => format(QDateTimeUtils.dateOnly);
-  
+
   /// Formats this DateTime as time only (HH:mm:ss)
-  /// 
+  ///
   /// Example:
   /// ```dart
   /// final date = DateTime.now();
   /// print(date.toTimeString()); // "10:30:45"
   /// ```
   String toTimeString() => format(QDateTimeUtils.timeOnly);
-  
+
   /// Formats this DateTime as readable format (MMM dd, yyyy)
   ///
   /// Example:
@@ -70,7 +69,7 @@ extension QDateTimeExtensions on DateTime {
   /// print(date.toReadableWithTime()); // "Dec 25, 2023 10:30"
   /// ```
   String toReadableWithTime() => format(QDateTimeUtils.readableWithTime);
-  
+
   /// Returns a human-readable relative time string
   ///
   /// Example:
@@ -103,7 +102,9 @@ extension QDateTimeExtensions on DateTime {
   /// ```
   bool get isYesterday {
     final yesterday = DateTime.now().subtract(const Duration(days: 1));
-    return year == yesterday.year && month == yesterday.month && day == yesterday.day;
+    return year == yesterday.year &&
+        month == yesterday.month &&
+        day == yesterday.day;
   }
 
   /// Check if this DateTime is tomorrow
@@ -115,7 +116,9 @@ extension QDateTimeExtensions on DateTime {
   /// ```
   bool get isTomorrow {
     final tomorrow = DateTime.now().add(const Duration(days: 1));
-    return year == tomorrow.year && month == tomorrow.month && day == tomorrow.day;
+    return year == tomorrow.year &&
+        month == tomorrow.month &&
+        day == tomorrow.day;
   }
 
   /// Get the name of the day of week
@@ -236,7 +239,8 @@ extension QDateTimeExtensions on DateTime {
   /// final date = DateTime(2023, 12, 25);
   /// print(date.endOfMonth); // 2023-12-31 23:59:59.999
   /// ```
-  DateTime get endOfMonth => DateTime(year, month + 1, 1).subtract(const Duration(microseconds: 1));
+  DateTime get endOfMonth =>
+      DateTime(year, month + 1, 1).subtract(const Duration(microseconds: 1));
 
   /// Add months to this DateTime
   ///
@@ -258,9 +262,18 @@ extension QDateTimeExtensions on DateTime {
       newYear--;
     }
 
-    return DateTime(newYear, newMonth, day, hour, minute, second, millisecond, microsecond);
+    return DateTime(
+      newYear,
+      newMonth,
+      day,
+      hour,
+      minute,
+      second,
+      millisecond,
+      microsecond,
+    );
   }
-  
+
   /// Add years to this DateTime
   ///
   /// Example:
@@ -268,11 +281,20 @@ extension QDateTimeExtensions on DateTime {
   /// final date = DateTime(2023, 12, 25);
   /// print(date.addYears(2)); // 2025-12-25
   /// ```
-  DateTime addYears(int years) => DateTime(year + years, month, day, hour, minute, second, millisecond, microsecond);
+  DateTime addYears(int years) => DateTime(
+    year + years,
+    month,
+    day,
+    hour,
+    minute,
+    second,
+    millisecond,
+    microsecond,
+  );
 }
 
 /// Duration extensions for QUtils
-/// 
+///
 /// Provides convenient extension methods on Duration objects for formatting
 /// and human-readable representations.
 extension QDurationExtensions on Duration {
@@ -286,7 +308,8 @@ extension QDurationExtensions on Duration {
   String get humanReadable => QDateTimeUtils.formatDuration(this);
 
   /// Gets a verbose human-readable string representation of this Duration
-  String get verboseHumanReadable => QDateTimeUtils.formatDuration(this, verbose: true);
+  String get verboseHumanReadable =>
+      QDateTimeUtils.formatDuration(this, verbose: true);
 
   /// Gets the total number of weeks in this Duration
   int get inWeeks => inDays ~/ 7;

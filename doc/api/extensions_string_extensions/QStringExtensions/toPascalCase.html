@@ -75,9 +75,7 @@ print('hello-world'.toPascalCase()); // "HelloWorld"
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">String toPascalCase() {
   if (isEmpty) return this;
-  return split(RegExp(r&#39;[\s\-_]+&#39;))
-      .map((word) =&gt; word.capitalize())
-      .join(&#39;&#39;);
+  return split(RegExp(r&#39;[\s\-_]+&#39;)).map((word) =&gt; word.capitalize()).join(&#39;&#39;);
 }</code></pre>
 </section>
 
@@ -106,7 +104,7 @@ print('hello-world'.toPascalCase()); // "HelloWorld"
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

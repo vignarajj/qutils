@@ -78,7 +78,10 @@ print(map?['name']); // John
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static Map&lt;String, dynamic&gt;? parseToMap(String jsonString, [Map&lt;String, dynamic&gt;? fallback]) {
+  <pre class="language-dart"><code class="language-dart">static Map&lt;String, dynamic&gt;? parseToMap(
+  String jsonString, [
+  Map&lt;String, dynamic&gt;? fallback,
+]) {
   try {
     final decoded = jsonDecode(jsonString);
     if (decoded is Map&lt;String, dynamic&gt;) {
@@ -114,7 +117,7 @@ print(map?['name']); // John
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

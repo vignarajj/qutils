@@ -80,7 +80,10 @@ print('a;b;c'.asListSafe(delimiter: ';')); // ['a', 'b', 'c']
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">List&lt;T&gt;? asListSafe&lt;T&gt;({String delimiter = &#39;,&#39;, List&lt;T&gt;? fallback}) {
   return QTypeConversion.toListSafe&lt;T&gt;(
-      this, delimiter: delimiter, fallback: fallback);
+    this,
+    delimiter: delimiter,
+    fallback: fallback,
+  );
 }</code></pre>
 </section>
 
@@ -109,7 +112,7 @@ print('a;b;c'.asListSafe(delimiter: ';')); // ['a', 'b', 'c']
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

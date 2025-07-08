@@ -78,7 +78,10 @@ print(list); // [1, 2, 3]
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static List&lt;dynamic&gt;? parseToList(String jsonString, [List&lt;dynamic&gt;? fallback]) {
+  <pre class="language-dart"><code class="language-dart">static List&lt;dynamic&gt;? parseToList(
+  String jsonString, [
+  List&lt;dynamic&gt;? fallback,
+]) {
   try {
     final decoded = jsonDecode(jsonString);
     if (decoded is List) {
@@ -114,7 +117,7 @@ print(list); // [1, 2, 3]
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

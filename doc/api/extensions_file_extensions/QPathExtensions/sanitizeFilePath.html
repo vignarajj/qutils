@@ -80,7 +80,10 @@ print(sanitized); // '/path/to/file_name__.txt'
   final fileName = this.fileName;
   if (fileName == null) return this;
 
-  final sanitizedName = QFileInfoUtils.sanitizeFileName(fileName, replacement: replacement);
+  final sanitizedName = QFileInfoUtils.sanitizeFileName(
+    fileName,
+    replacement: replacement,
+  );
   final directory = fileDirectory ?? &#39;&#39;;
 
   return directory.isEmpty ? sanitizedName : &#39;$directory&#47;$sanitizedName&#39;;
@@ -112,7 +115,7 @@ print(sanitized); // '/path/to/file_name__.txt'
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

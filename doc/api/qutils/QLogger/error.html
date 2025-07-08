@@ -55,36 +55,29 @@
     <section class="multi-line-signature">
       
 <span class="returntype">void</span>
-<span class="name ">error</span>(<wbr><ol class="parameter-list"> <li><span class="parameter" id="error-param-message"><span class="type-annotation">dynamic</span> <span class="parameter-name">message</span>, {</span></li>
-<li><span class="parameter" id="error-param-tag"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">tag</span>, </span></li>
-<li><span class="parameter" id="error-param-error"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">error</span>, </span></li>
-<li><span class="parameter" id="error-param-stackTrace"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/StackTrace-class.html">StackTrace</a>?</span> <span class="parameter-name">stackTrace</span>, </span></li>
-<li><span class="parameter" id="error-param-color"><span class="type-annotation"><a href="../../qutils/AnsiColor-class.html">AnsiColor</a>?</span> <span class="parameter-name">color</span>, </span></li>
-</ol>})
+<span class="name ">error</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="error-param-message"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">message</span>, [</span></li>
+<li><span class="parameter" id="error-param-error"><span class="type-annotation">dynamic</span> <span class="parameter-name">error</span>, </span></li>
+<li><span class="parameter" id="error-param-stackTrace"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/StackTrace-class.html">StackTrace</a>?</span> <span class="parameter-name">stackTrace</span></span></li>
+</ol>])
 
       
 
     </section>
     
 <section class="desc markdown">
-  <p>Logs an error message.</p>
+  <p>Logs an error message in red. Handles and formats stack trace if provided.</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static void error(dynamic message, {
-  String? tag,
-  Object? error,
-  StackTrace? stackTrace,
-  AnsiColor? color,
-}) {
-  _log(LogLevel.error, message,
-    tag: tag,
-    error: error,
-    stackTrace: stackTrace,
-    customColor: color,
+  <pre class="language-dart"><code class="language-dart">static void error(String message, [dynamic error, StackTrace? stackTrace]) {
+  &#47;&#47; Handle large error logs
+  _handleLargeLogs(
+    message,
+    (msg) =&gt;
+        _log(&#39;ERROR&#39;, msg, AnsiColors.red, LogLevel.error, error, stackTrace),
   );
 }</code></pre>
 </section>
@@ -114,7 +107,7 @@
 <footer>
   <span class="no-break">
     qutils
-      1.0.0
+      1.0.2
   </span>
   
 </footer>

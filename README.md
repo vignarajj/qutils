@@ -45,13 +45,15 @@ QUtils is designed to work seamlessly across all platforms supported by Flutter!
 - **Utility lists** for dropdowns and selections
 
 ### 🎨 **QLogger - Advanced Colorful Logging**
-- **Colorful console output** with ANSI colors for better readability
+- **Enhanced colorful console output** with ANSI colors for better readability
 - **Multiple log levels**: Debug, Info, Warning, Error, Fatal
 - **Custom tags** and **colored output** for organized logging
 - **JSON prettification** and logging support
 - **Text wrapping** for long messages with proper indentation
 - **Tagged loggers** for component-specific logging
 - **Configurable** minimum log levels and formatting options
+- **Boxy formatting** for structured log output
+- **Log buffer management**: Retrieve and clear logs programmatically
 
 ### 🕒 **DateTime Utilities**
 - **25+ powerful methods** for date manipulation and formatting
@@ -156,19 +158,15 @@ void main() {
   
   // 🎨 QLogger - Colorful Logging
   QLogger.info('Application started successfully!');
-  QLogger.warning('This is a warning message', tag: 'AUTH');
-  QLogger.error('Something went wrong!', 
-    tag: 'DATABASE',
-    error: Exception('Connection failed'),
-    stackTrace: StackTrace.current,
+  QLogger.warning('This is a warning message',);
+  QLogger.error('Something went wrong!',
+    Exception('Connection failed'),
+    StackTrace.current,
   );
   
   // JSON logging
-  QLogger.json({'user': 'john', 'status': 'active'}, tag: 'API');
+  QLogger.prettyJson({'user': 'john', 'status': 'active'}.toString());
   
-  // Tagged logger for specific components
-  final apiLogger = QLogger.withTag('API');
-  apiLogger.info('API request completed');
   
   // 🕒 DateTime Utilities
   final now = DateTime.now();
@@ -457,23 +455,6 @@ QLogger.debug('Debug information');
 QLogger.info('General information');
 QLogger.warning('Warning message');
 QLogger.error('Error occurred');
-QLogger.fatal('Critical error');
-
-// Custom colored logging
-QLogger.custom('Custom message', color: AnsiColor.magenta);
-```
-
-#### Tagged Logging
-
-```dart
-// Add tags for better organization
-QLogger.info('User logged in', tag: 'AUTH');
-QLogger.error('Database connection failed', tag: 'DB');
-
-// Create a tagged logger instance
-final authLogger = QLogger.withTag('AUTH');
-authLogger.info('Authentication successful');
-authLogger.warning('Invalid token detected');
 ```
 
 #### Error Logging with Context
@@ -505,7 +486,7 @@ final userData = {
   },
 };
 
-QLogger.json(userData, tag: 'USER_DATA', level: LogLevel.info);
+QLogger.prettyJson(userData.toString());
 ```
 
 #### Performance Logging
@@ -518,78 +499,8 @@ await performComplexOperation();
 
 stopwatch.stop();
 QLogger.info(
-  'Operation completed in ${stopwatch.elapsedMilliseconds}ms',
-  tag: 'PERFORMANCE',
+  'Operation completed in ${stopwatch.elapsedMilliseconds}ms'
 );
-```
-
-### 🕒 DateTime Extensions
-
-```dart
-final date = DateTime.now();
-
-// Formatting
-print(date.format('MMM dd, yyyy')); // "Dec 25, 2023"
-print(date.toDateString()); // "2023-12-25"
-print(date.toTimeString()); // "10:30:45"
-
-// Properties
-print(date.isToday); // true
-print(date.dayName); // "Monday"
-print(date.quarter); // 4
-print(date.weekOfYear); // 52
-
-// Manipulation
-print(date.startOfDay); // Today at 00:00:00
-print(date.addMonths(3)); // 3 months from now
-print(date.startOfWeek); // Monday of this week
-
-// Relative time
-final yesterday = date.subtract(Duration(days: 1));
-print(yesterday.timeAgo()); // "1 day ago"
-```
-
-### 🔄 Type Conversion
-
-```dart
-// Safe conversions with fallbacks
-print('42'.asIntSafe()); // 42
-print('invalid'.asIntSafe(0)); // 0 (fallback)
-print('42.5'.asDoubleSafe()); // 42.5
-print('true'.asBoolSafe()); // true
-print('yes'.asBoolSafe()); // true
-
-// Byte conversion
-print(QTypeConversion.bytesToHuman(1048576)); // "1.00 MB"
-print(QTypeConversion.humanToBytes('1.5 GB')); // 1610612736
-```
-
-### 🎨 Colors
-
-```dart
-// Access curated color collections
-print(QColors.allColors.length); // 50+
-print(QColors.vibrantColors.length); // 8
-print(QColors.pastelColors.length); // 8
-
-// Get random colors
-final randomColor = QColors.random();
-final randomVibrant = QColors.randomVibrant();
-
-// Color manipulation
-final baseColor = QColors.electricBlue;
-final lighter = baseColor.lighten(0.3);
-final darker = baseColor.darken(0.2);
-final complement = baseColor.complement;
-
-// Color conversion
-print(baseColor.toHex()); // "#0080FF"
-print(baseColor.toRgbList()); // [0, 128, 255]
-
-// Color schemes
-final monochromatic = baseColor.monochromaticScheme; // 5 colors
-final analogous = baseColor.analogousScheme; // 5 colors
-final triadic = baseColor.triadicScheme; // 3 colors
 ```
 
 ---
