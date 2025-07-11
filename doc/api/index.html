@@ -182,6 +182,37 @@ and the Flutter guide for
 <li>Size and metadata extraction</li>
 <li>File validation helpers</li>
 </ul>
+<h3 id="-responsive-extensions">📱 <strong>Responsive Extensions</strong></h3>
+<ul>
+<li>Effortlessly build responsive UIs with context-based extensions</li>
+<li>Detect device type (mobile, tablet, desktop) and orientation</li>
+<li>Responsive font sizes, paddings, margins, and layout helpers</li>
+<li>Access safe area insets and percentage-based sizing</li>
+</ul>
+<h3 id="-conditional-value-selection-fluent-api">❓ <strong>Conditional Value Selection (Fluent API)</strong></h3>
+<ul>
+<li>Write expressive, chainable conditional logic for value selection</li>
+<li>Avoid nested if-else or switch statements for simple value picking</li>
+<li>Works with any type (String, int, Widget, etc.)</li>
+</ul>
+<h4 id="usage-example">Usage Example</h4>
+<pre class="language-dart"><code class="language-dart">import 'package:qutils/qutils.dart';
+
+int x = 7;
+
+final conditionalValue = (() =&gt; x &gt; 10)
+    .then(() =&gt; 'x is greater than 10')
+    .on(() =&gt; x &gt; 5, () =&gt; 'x is greater than 5')
+    .on(() =&gt; x &gt; 0, () =&gt; 'x is positive')
+    .build(orElse: () =&gt; 'x is zero or negative');
+
+// The first true condition is x &gt; 5, so result is "x is greater than 5"
+</code></pre>
+<ul>
+<li>The first matching condition's value is returned.</li>
+<li>The <code>orElse</code> parameter is optional; if omitted and no condition matches, a StateError is thrown.</li>
+<li>You can use this for UI, business logic, or anywhere you need clean conditional value selection.</li>
+</ul>
 <hr>
 <h2 id="-quick-start">🚀 Quick Start</h2>
 <h3 id="installation">Installation</h3>
@@ -577,6 +608,13 @@ dart test --coverage
 <dd>
 </dd>
 
+          <dt id="conditions_extensions">
+  <span class="name"><a href="extensions_conditions_extensions/">extensions/conditions_extensions</a></span> 
+
+</dt>
+<dd>
+</dd>
+
           <dt id="datetime_extensions">
   <span class="name"><a href="extensions_datetime_extensions/">extensions/datetime_extensions</a></span> 
 
@@ -586,6 +624,13 @@ dart test --coverage
 
           <dt id="file_extensions">
   <span class="name"><a href="extensions_file_extensions/">extensions/file_extensions</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="responsive_extensions">
+  <span class="name"><a href="extensions_responsive_extensions/">extensions/responsive_extensions</a></span> 
 
 </dt>
 <dd>
@@ -623,8 +668,10 @@ dart test --coverage
     <ol>
       <li class="section-title">Libraries</li>
       <li><a href="extensions_color_extensions/">extensions/color_extensions</a></li>
+      <li><a href="extensions_conditions_extensions/">extensions/conditions_extensions</a></li>
       <li><a href="extensions_datetime_extensions/">extensions/datetime_extensions</a></li>
       <li><a href="extensions_file_extensions/">extensions/file_extensions</a></li>
+      <li><a href="extensions_responsive_extensions/">extensions/responsive_extensions</a></li>
       <li><a href="extensions_string_extensions/">extensions/string_extensions</a></li>
       <li><a href="qutils/">qutils</a></li>
 </ol>
@@ -636,7 +683,7 @@ dart test --coverage
 <footer>
   <span class="no-break">
     qutils
-      1.0.2
+      1.0.3
   </span>
   
 </footer>

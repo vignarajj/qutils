@@ -8,9 +8,8 @@ import '../src/file_info_utils.dart';
 extension QFileExtensions on File {
   /// Gets the file extension (without dot)
   ///
-  /// [includeDot] is a parameter used in QFileInfoUtils to determine whether the dot should be included in the extension.
-  ///
-  /// Returns the file extension or null if not found
+  /// Returns the file extension or null if not found.
+  /// Uses QFileInfoUtils.getExtension(path) with the dot excluded.
   ///
   /// Example:
   /// ```dart
@@ -22,7 +21,8 @@ extension QFileExtensions on File {
 
   /// Gets the file extension with dot
   ///
-  /// [includeDot] is set to true in QFileInfoUtils to include the dot in the extension.
+  /// Returns the file extension including the dot, or null if not found.
+  /// Uses QFileInfoUtils.getExtension(path, includeDot: true).
   String? get extensionWithDot =>
       QFileInfoUtils.getExtension(path, includeDot: true);
 
@@ -188,8 +188,6 @@ extension QFileExtensions on File {
 extension QPathExtensions on String {
   /// Gets the file extension from this path (without dot)
   ///
-  /// [includeDot] Whether to include the dot in the extension (defaults to false)
-  ///
   /// Returns the file extension or null if not found
   ///
   /// Example:
@@ -201,7 +199,8 @@ extension QPathExtensions on String {
 
   /// Gets the file extension with dot
   ///
-  /// [includeDot] is set to true in QFileInfoUtils to include the dot in the extension.
+  /// Returns the file extension including the dot, or null if not found.
+  /// Uses QFileInfoUtils.getExtension(this, includeDot: true).
   String? get fileExtensionWithDot =>
       QFileInfoUtils.getExtension(this, includeDot: true);
 

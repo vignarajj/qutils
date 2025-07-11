@@ -1,6 +1,6 @@
 name: qutils
 description: A comprehensive utility package for Dart/Flutter with datetime, conversion, file info, QR code, JSON, and color utilities.
-version: 1.0.2
+version: 1.0.3
 homepage: https://vignaraj.dev
 repository: https://github.com/vignarajj/qutils
 

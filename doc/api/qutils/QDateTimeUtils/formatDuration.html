@@ -81,8 +81,9 @@
       final parts = &lt;String&gt;[];
       if (days &gt; 0) parts.add(&#39;$days ${days == 1 ? &#39;day&#39; : &#39;days&#39;}&#39;);
       if (hours &gt; 0) parts.add(&#39;$hours ${hours == 1 ? &#39;hour&#39; : &#39;hours&#39;}&#39;);
-      if (minutes &gt; 0)
+      if (minutes &gt; 0) {
         parts.add(&#39;$minutes ${minutes == 1 ? &#39;minute&#39; : &#39;minutes&#39;}&#39;);
+      }
 
       return parts.join(&#39; &#39;);
     } else {
@@ -95,8 +96,9 @@
 
       final parts = &lt;String&gt;[];
       if (hours &gt; 0) parts.add(&#39;$hours ${hours == 1 ? &#39;hour&#39; : &#39;hours&#39;}&#39;);
-      if (minutes &gt; 0)
+      if (minutes &gt; 0) {
         parts.add(&#39;$minutes ${minutes == 1 ? &#39;minute&#39; : &#39;minutes&#39;}&#39;);
+      }
 
       return parts.join(&#39; &#39;);
     } else {
@@ -108,10 +110,12 @@
       final seconds = duration.inSeconds.remainder(60);
 
       final parts = &lt;String&gt;[];
-      if (minutes &gt; 0)
+      if (minutes &gt; 0) {
         parts.add(&#39;$minutes ${minutes == 1 ? &#39;minute&#39; : &#39;minutes&#39;}&#39;);
-      if (seconds &gt; 0)
+      }
+      if (seconds &gt; 0) {
         parts.add(&#39;$seconds ${seconds == 1 ? &#39;second&#39; : &#39;seconds&#39;}&#39;);
+      }
 
       return parts.join(&#39; &#39;);
     } else {
@@ -153,7 +157,7 @@
 <footer>
   <span class="no-break">
     qutils
-      1.0.2
+      1.0.3
   </span>
   
 </footer>

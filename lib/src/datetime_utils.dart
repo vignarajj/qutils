@@ -94,8 +94,9 @@ class QDateTimeUtils {
         final parts = <String>[];
         if (days > 0) parts.add('$days ${days == 1 ? 'day' : 'days'}');
         if (hours > 0) parts.add('$hours ${hours == 1 ? 'hour' : 'hours'}');
-        if (minutes > 0)
+        if (minutes > 0) {
           parts.add('$minutes ${minutes == 1 ? 'minute' : 'minutes'}');
+        }
 
         return parts.join(' ');
       } else {
@@ -108,8 +109,9 @@ class QDateTimeUtils {
 
         final parts = <String>[];
         if (hours > 0) parts.add('$hours ${hours == 1 ? 'hour' : 'hours'}');
-        if (minutes > 0)
+        if (minutes > 0) {
           parts.add('$minutes ${minutes == 1 ? 'minute' : 'minutes'}');
+        }
 
         return parts.join(' ');
       } else {
@@ -121,10 +123,12 @@ class QDateTimeUtils {
         final seconds = duration.inSeconds.remainder(60);
 
         final parts = <String>[];
-        if (minutes > 0)
+        if (minutes > 0) {
           parts.add('$minutes ${minutes == 1 ? 'minute' : 'minutes'}');
-        if (seconds > 0)
+        }
+        if (seconds > 0) {
           parts.add('$seconds ${seconds == 1 ? 'second' : 'seconds'}');
+        }
 
         return parts.join(' ');
       } else {

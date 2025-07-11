@@ -32,9 +32,7 @@ extension QColorExtensions on Color {
     }
   }
 
-  /// Gets the RGB values as a list [r, g, b]
-  ///
-  /// [r] Red component, [g] Green component, [b] Blue component.
+  /// Gets the RGB values as a list of red, green, and blue components.
   ///
   /// Example:
   /// ```dart
@@ -47,9 +45,7 @@ extension QColorExtensions on Color {
     (b * 255.0).round() & 0xff,
   ];
 
-  /// Gets the RGBA values as a list [r, g, b, a]
-  ///
-  /// [r] Red component, [g] Green component, [b] Blue component, [a] Alpha component.
+  /// Gets the RGBA values as a list of red, green, blue, and alpha components.
   ///
   /// Example:
   /// ```dart

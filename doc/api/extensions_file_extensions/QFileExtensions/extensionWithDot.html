@@ -68,7 +68,8 @@
     
 <section class="desc markdown">
   <p>Gets the file extension with dot</p>
-<p><code>includeDot</code> is set to true in QFileInfoUtils to include the dot in the extension.</p>
+<p>Returns the file extension including the dot, or null if not found.
+Uses QFileInfoUtils.getExtension(path, includeDot: true).</p>
 </section>
 
     
@@ -105,7 +106,7 @@
 <footer>
   <span class="no-break">
     qutils
-      1.0.2
+      1.0.3
   </span>
   
 </footer>

@@ -116,6 +116,37 @@ QUtils is designed to work seamlessly across all platforms supported by Flutter!
 - Size and metadata extraction
 - File validation helpers
 
+### 📱 **Responsive Extensions**
+- Effortlessly build responsive UIs with context-based extensions
+- Detect device type (mobile, tablet, desktop) and orientation
+- Responsive font sizes, paddings, margins, and layout helpers
+- Access safe area insets and percentage-based sizing
+
+### ❓ **Conditional Value Selection (Fluent API)**
+- Write expressive, chainable conditional logic for value selection
+- Avoid nested if-else or switch statements for simple value picking
+- Works with any type (String, int, Widget, etc.)
+
+#### Usage Example
+
+```dart
+import 'package:qutils/qutils.dart';
+
+int x = 7;
+
+final conditionalValue = (() => x > 10)
+    .then(() => 'x is greater than 10')
+    .on(() => x > 5, () => 'x is greater than 5')
+    .on(() => x > 0, () => 'x is positive')
+    .build(orElse: () => 'x is zero or negative');
+
+// The first true condition is x > 5, so result is "x is greater than 5"
+```
+
+- The first matching condition's value is returned.
+- The `orElse` parameter is optional; if omitted and no condition matches, a StateError is thrown.
+- You can use this for UI, business logic, or anywhere you need clean conditional value selection.
+
 ---
 
 ## 🚀 Quick Start

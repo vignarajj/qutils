@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qutils/extensions/conditions_extensions.dart';
 import 'package:qutils/qutils.dart';
 
 void main() {
@@ -12,10 +13,7 @@ class QUtilsExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'QUtils Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
       home: QUtilsExampleScreen(),
     );
   }
@@ -39,34 +37,48 @@ class QUtilsExampleScreenState extends State<QUtilsExampleScreen> {
 
   void _runExamples() {
     final buffer = StringBuffer();
-    
+
     buffer.writeln('=== QUtils Comprehensive Example ===\n');
-    
+
     // ======================== DATETIME UTILITIES ========================
     buffer.writeln('🕒 DATETIME UTILITIES:');
     final now = DateTime.now();
     final twoHoursAgo = now.subtract(Duration(hours: 2));
-    
+
     buffer.writeln('Current time: ${now.toReadableWithTime()}');
     buffer.writeln('Two hours ago: ${twoHoursAgo.timeAgo()}');
     buffer.writeln('Is today? ${now.isToday}');
     buffer.writeln('Day of week: ${now.dayName}');
     buffer.writeln('Start of day: ${now.startOfDay.toTimeString()}');
-    buffer.writeln('Age calculation: ${QDateTimeUtils.calculateAge(DateTime(1990, 5, 15))} years');
+    buffer.writeln(
+      'Age calculation: ${QDateTimeUtils.calculateAge(DateTime(1990, 5, 15))} years',
+    );
     buffer.writeln('Is leap year? ${QDateTimeUtils.isLeapYear(2024)}');
-    buffer.writeln('Duration format: ${Duration(hours: 2, minutes: 30).humanReadable}');
+    buffer.writeln(
+      'Duration format: ${Duration(hours: 2, minutes: 30).humanReadable}',
+    );
     buffer.writeln();
-    
+
     // ======================== TYPE CONVERSION ========================
     buffer.writeln('🔄 TYPE CONVERSION:');
     buffer.writeln('String to int: ${'42'.asIntSafe()}');
-    buffer.writeln('String to double: ${'42.5'.asDoubleSafe()}');
-    buffer.writeln('String to bool: ${'yes'.asBoolSafe()}');
-    buffer.writeln('Invalid conversion: ${'invalid'.asIntSafe(0)}');
-    buffer.writeln('Bytes to human: ${QTypeConversion.bytesToHuman(1073741824)}');
-    buffer.writeln('Human to bytes: ${QTypeConversion.humanToBytes('1 GB')}');
+    buffer.writeln(
+      'Invalid string to int (default 0): ${'invalid'.asIntSafe(0)}',
+    );
+    buffer.writeln(
+      'Bytes to human: ${QTypeConversion.bytesToHuman(1073741824)}',
+    );
     buffer.writeln();
-    
+
+    // ======================== RESPONSIVE EXTENSIONS ========================
+    buffer.writeln('📱 RESPONSIVE EXTENSIONS:');
+    // Example usage of responsive extensions (requires BuildContext)
+    // These are best used in the build method of a widget, but we show the API here:
+    buffer.writeln(
+      'Use context.screenWidth, context.isMobile, context.mediumFontSize, etc. in your widgets.',
+    );
+    buffer.writeln();
+
     // ======================== FILE INFO UTILITIES ========================
     buffer.writeln('📁 FILE INFO UTILITIES:');
     final filePath = '/path/to/document.pdf';
@@ -77,7 +89,7 @@ class QUtilsExampleScreenState extends State<QUtilsExampleScreen> {
     buffer.writeln('Is document? ${QFileInfoUtils.isDocument(filePath)}');
     buffer.writeln('Is image? ${filePath.isImageFile}'); // Extension method
     buffer.writeln();
-    
+
     // ======================== JSON UTILITIES ========================
     buffer.writeln('📄 JSON UTILITIES:');
     final jsonString = '{"name":"John","age":30,"city":"NYC"}';
@@ -87,24 +99,28 @@ class QUtilsExampleScreenState extends State<QUtilsExampleScreen> {
     buffer.writeln('Is valid JSON: ${jsonString.isValidJSON}');
     buffer.writeln('JSON size: ${jsonString.jsonSize()} bytes');
     buffer.writeln('Key count: ${jsonString.jsonKeyCount()}');
-    
+
     final complexJson = '{"user":{"profile":{"name":"Alice"}}}';
-    buffer.writeln('Extract nested: ${complexJson.jsonExtract('user.profile.name')}');
+    buffer.writeln(
+      'Extract nested: ${complexJson.jsonExtract('user.profile.name')}',
+    );
     buffer.writeln();
-    
+
     // ======================== QR CODE UTILITIES ========================
     buffer.writeln('📱 QR CODE UTILITIES:');
     final qrData = 'https://flutter.dev';
     final validation = QQRCodeUtils.validateQRData(qrData);
     buffer.writeln('QR data: $qrData');
     buffer.writeln('Is valid: ${validation.isValid}');
-    buffer.writeln('Optimal version: ${QQRCodeUtils.getOptimalVersion(qrData)}');
-    
+    buffer.writeln(
+      'Optimal version: ${QQRCodeUtils.getOptimalVersion(qrData)}',
+    );
+
     // WiFi QR example
     final wifiQR = QQRCodeUtils.createWiFiQR('MyNetwork', 'password123');
     buffer.writeln('WiFi QR data: ${wifiQR.substring(0, 30)}...');
     buffer.writeln();
-    
+
     // ======================== COLOR UTILITIES ========================
     buffer.writeln('🎨 COLOR UTILITIES:');
     buffer.writeln('Total colors: ${QColors.allColors.length}');
@@ -113,7 +129,7 @@ class QUtilsExampleScreenState extends State<QUtilsExampleScreen> {
     buffer.writeln('Random color: ${QColors.random().toHex()}');
     buffer.writeln('Hot pink hex: ${QColors.hotPink.toHex()}');
     buffer.writeln('Hot pink RGB: ${QColors.hotPink.toRgbList()}');
-    
+
     // Color manipulation
     final baseColor = QColors.electricBlue;
     buffer.writeln('Base color: ${baseColor.toHex()}');
@@ -121,9 +137,11 @@ class QUtilsExampleScreenState extends State<QUtilsExampleScreen> {
     buffer.writeln('Darker: ${baseColor.darken(0.2).toHex()}');
     buffer.writeln('Complement: ${baseColor.complement().toHex()}');
     buffer.writeln('Is dark: ${baseColor.isDark}');
-    buffer.writeln('Contrasting text: ${baseColor.contrastingTextColor().toHex()}');
+    buffer.writeln(
+      'Contrasting text: ${baseColor.contrastingTextColor().toHex()}',
+    );
     buffer.writeln();
-    
+
     // ======================== STRING EXTENSIONS ========================
     buffer.writeln('📝 STRING EXTENSIONS:');
     final text = 'hello world';
@@ -137,7 +155,7 @@ class QUtilsExampleScreenState extends State<QUtilsExampleScreen> {
     buffer.writeln('Is email: ${'user@example.com'.isEmail}');
     buffer.writeln('Is URL: ${'https://flutter.dev'.isURL}');
     buffer.writeln();
-    
+
     // ======================== DATETIME EXTENSIONS ========================
     buffer.writeln('📅 DATETIME EXTENSIONS:');
     final sampleDate = DateTime(2023, 12, 25, 15, 30, 45);
@@ -150,7 +168,22 @@ class QUtilsExampleScreenState extends State<QUtilsExampleScreen> {
     buffer.writeln('Add 2 months: ${sampleDate.addMonths(2).toDateString()}');
     buffer.writeln('Start of week: ${sampleDate.startOfWeek.toDateString()}');
     buffer.writeln();
-    
+
+    //======================== CONDITIONAL EXTENSIONS ========================
+    buffer.writeln('❓ CONDITIONAL EXTENSIONS:');
+    // Demonstrate the fluent conditional value selection extension (lint-free)
+    int x = 7;
+    final conditionalValue = (() => x > 10)
+        .then(() => 'x is greater than 10')
+        .on(() => x > 5, () => 'x is greater than 5')
+        .on(() => x > 0, () => 'x is positive')
+        .build(orElse: () => 'x is zero or negative');
+
+    buffer.writeln('x = $x, result = $conditionalValue');
+    buffer.writeln(
+      'Explanation: The first true condition is x > 5, so result is "x is greater than 5".',
+    );
+    buffer.writeln();
     // ======================== SUMMARY ========================
     buffer.writeln('✅ ALL QUTILS FEATURES DEMONSTRATED!');
     buffer.writeln('Features include:');
@@ -161,7 +194,7 @@ class QUtilsExampleScreenState extends State<QUtilsExampleScreen> {
     buffer.writeln('• JSON prettification and validation');
     buffer.writeln('• 100+ curated colors with utilities');
     buffer.writeln('• Comprehensive extensions on core types');
-    
+
     setState(() {
       _results = buffer.toString();
     });
@@ -198,9 +231,9 @@ class QUtilsExampleScreenState extends State<QUtilsExampleScreen> {
               ],
             ),
           ),
-          
+
           Divider(),
-          
+
           // Color Palette Demo
           Container(
             padding: EdgeInsets.all(16),
@@ -214,22 +247,26 @@ class QUtilsExampleScreenState extends State<QUtilsExampleScreen> {
                 Wrap(
                   spacing: 8,
                   runSpacing: 8,
-                  children: QColors.vibrantColors.map((color) => Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: color,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.grey),
-                    ),
-                  )).toList(),
+                  children: QColors.vibrantColors
+                      .map(
+                        (color) => Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: color,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.grey),
+                          ),
+                        ),
+                      )
+                      .toList(),
                 ),
               ],
             ),
           ),
-          
+
           Divider(),
-          
+
           // Results
           Expanded(
             child: Container(
